@@ -1,5 +1,6 @@
 import { DatabaseService } from '../../services/DatabaseService';
 import { ApplicationConstants } from '../../constants/ApplicationConstants';
+import { HealthConstants } from '../../constants/HealthConstants';
 import { ControllerCodes } from './ControllerCodes';
 import { ControllerResponse } from './ControllerResponse';
 import { HealthResponse } from './HealthResponse';
@@ -24,7 +25,7 @@ export class HealthController {
       return {
         success: true,
         data: {
-          status: 'healthy',
+          status: HealthConstants.Healthy,
           service: ApplicationConstants.Name,
           version: ApplicationConstants.Version,
           database: {
