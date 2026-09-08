@@ -1,6 +1,7 @@
 import { ApiConfig } from './ApiConfig';
 import { ApiRoutes } from './ApiRoutes';
 import { ApiStatus } from './ApiStatus';
+import { HttpServer } from './HttpServer';
 
 import { ApiMessages } from '../constants/ApiMessages';
 import { ApiStatusConstants } from '../constants/ApiStatusConstants';
@@ -11,6 +12,7 @@ import { ApiRouteSummary } from '../types/ApiRouteSummary';
 
 export class ApiServer {
   private routes = new ApiRoutes();
+  private httpServer = new HttpServer();
 
   async start(
     config: ApiConfig
@@ -68,5 +70,9 @@ export class ApiServer {
       totalRoutes:
         this.routes.getRoutes().length,
     };
+  }
+
+  getHttpServer(): HttpServer {
+    return this.httpServer;
   }
 }
