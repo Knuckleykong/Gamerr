@@ -1,5 +1,9 @@
+import { Application } from './bootstrap/Application';
+
 async function main() {
-  console.log('Gamerr starting...');
+  const app = new Application();
+
+  await app.start();
 }
 
 main();
