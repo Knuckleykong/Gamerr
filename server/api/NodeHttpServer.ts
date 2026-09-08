@@ -13,15 +13,15 @@ export class NodeHttpServer {
   start(port: number): HttpServerStatus {
     const server = createServer(
       async (request, response) => {
-        const context =
-          HttpContextFactory.create(
+        const requestInfo =
+          HttpContextFactory.createRequestInfo(
             request.method ?? 'GET',
             request.url ?? '/'
           );
 
         const result =
           await this.requestHandler.handle(
-            context
+            requestInfo.request
           );
 
         response.writeHead(
