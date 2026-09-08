@@ -4,6 +4,7 @@ import { RouteHandler } from './RouteHandler';
 import { ApiConstants } from '../constants/ApiConstants';
 import { SettingsConstants } from '../constants/SettingsConstants';
 
+import { ApiController } from './controllers/ApiController';
 import { HealthController } from './controllers/HealthController';
 import { ApplicationController } from './controllers/ApplicationController';
 import { GamesController } from './controllers/GamesController';
@@ -12,6 +13,7 @@ import { SettingsController } from './controllers/SettingsController';
 import { DatabaseController } from './controllers/DatabaseController';
 
 export class ApiRoutes {
+  private apiController = new ApiController();
   private healthController = new HealthController();
   private applicationController =
     new ApplicationController();
@@ -25,6 +27,12 @@ export class ApiRoutes {
 
   getRoutes(): RouteHandler[] {
     return [
+      {
+        method: ApiMethods.GET,
+        path: `${ApiConstants.BasePath}/api`,
+        handler: () =>
+          this.apiController.getApi(),
+      },
       {
         method: ApiMethods.GET,
         path: `${ApiConstants.BasePath}/health`,
