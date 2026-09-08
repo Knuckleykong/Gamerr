@@ -1,4 +1,5 @@
 import { ApiMethods } from './ApiMethods';
+import { ControllerResponseMapper } from './ControllerResponseMapper';
 import { RouteHandler } from './RouteHandler';
 
 import { ApiRouteInfo } from '../types/ApiRouteInfo';
@@ -20,7 +21,8 @@ import { SettingsController } from './controllers/SettingsController';
 
 export class ApiRoutes {
   private apiController = new ApiController();
-  private routesController = new RoutesController();
+  private routesController =
+    new RoutesController();
   private routesSummaryController =
     new RoutesSummaryController();
   private healthController =
@@ -59,8 +61,10 @@ export class ApiRoutes {
       {
         method: ApiMethods.GET,
         path: `${ApiConstants.BasePath}${ApiRouteConstants.Health}`,
-        handler: () =>
-          this.healthController.getHealth(),
+        handler: async () =>
+          ControllerResponseMapper.map(
+            await this.healthController.getHealth()
+          ),
       },
       {
         method: ApiMethods.GET,
