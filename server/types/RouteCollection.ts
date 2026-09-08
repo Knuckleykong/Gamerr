@@ -1,5 +1,5 @@
-import { RouteInfo } from './RouteInfo';
+import { ApiRouteInfo } from './ApiRouteInfo';
 
 export interface RouteCollection {
-  routes: RouteInfo[];
+  routes: ApiRouteInfo[];
 }
