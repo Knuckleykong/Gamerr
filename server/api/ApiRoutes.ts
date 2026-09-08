@@ -1,10 +1,12 @@
 import { HealthController } from './controllers/HealthController';
 import { GamesController } from './controllers/GamesController';
+import { SettingsController } from './controllers/SettingsController';
 import { RouteHandler } from './RouteHandler';
 
 export class ApiRoutes {
   private healthController = new HealthController();
   private gamesController = new GamesController();
+  private settingsController = new SettingsController();
 
   getRoutes(): RouteHandler[] {
     return [
@@ -19,6 +21,14 @@ export class ApiRoutes {
         path: '/api/v1/games',
         handler: () =>
           this.gamesController.getGames(),
+      },
+      {
+        method: 'GET',
+        path: '/api/v1/settings',
+        handler: () =>
+          this.settingsController.getSetting(
+            'library.paths'
+          ),
       },
     ];
   }
