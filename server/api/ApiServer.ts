@@ -2,6 +2,7 @@ import { ApiConfig } from './ApiConfig';
 import { ApiRoutes } from './ApiRoutes';
 import { ApiStatus } from './ApiStatus';
 import { HttpServer } from './HttpServer';
+import { NodeHttpServer } from './NodeHttpServer';
 
 import { ApiMessages } from '../constants/ApiMessages';
 import { ApiStatusConstants } from '../constants/ApiStatusConstants';
@@ -13,6 +14,8 @@ import { ApiRouteSummary } from '../types/ApiRouteSummary';
 export class ApiServer {
   private routes = new ApiRoutes();
   private httpServer = new HttpServer();
+  private nodeHttpServer =
+    new NodeHttpServer();
 
   async start(
     config: ApiConfig
@@ -34,6 +37,10 @@ export class ApiServer {
         `${route.method} ${route.path}`
       );
     }
+
+    this.nodeHttpServer.start(
+      config.port
+    );
 
     return {
       running: ApiStatusConstants.Running,
