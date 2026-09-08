@@ -1,5 +1,6 @@
 import { ApiServer } from '../api/ApiServer';
 import { ConfigService } from '../config/ConfigService';
+import { ApplicationConstants } from '../constants/ApplicationConstants';
 import { DatabaseInitializer } from '../database/DatabaseInitializer';
 import { HealthCheckService } from '../services/HealthCheckService';
 import { ScanService } from '../services/scanner/ScanService';
@@ -16,7 +17,9 @@ export class Application {
     new DatabaseInitializer();
 
   async start() {
-    console.log('Starting Gamerr...');
+    console.log(
+      `Starting ${ApplicationConstants.Name}...`
+    );
 
     await this.databaseInitializer.initialize();
 
@@ -28,7 +31,7 @@ export class Application {
     const status: ApplicationStatus = {
       health,
       setupComplete: setupState.isConfigured,
-      version: '0.1.0-alpha',
+      version: ApplicationConstants.Version,
     };
 
     console.log('Application Status');
@@ -43,7 +46,7 @@ export class Application {
 
     if (!status.setupComplete) {
       console.log(
-        'Gamerr is not configured. Please complete setup.'
+        `${ApplicationConstants.Name} is not configured. Please complete setup.`
       );
 
       return;
