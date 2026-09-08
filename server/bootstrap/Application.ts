@@ -24,6 +24,9 @@ export class Application {
 
     await this.databaseInitializer.initialize();
 
+    const appConfig =
+      this.configService.getAppConfig();
+
     const setupState = this.startupChecks.run();
 
     const health =
@@ -37,6 +40,10 @@ export class Application {
 
     console.log('Application Status');
     console.log(status);
+
+    console.log(
+      `Environment: ${appConfig.environment.name}`
+    );
 
     const apiStatus = await this.apiServer.start({
       port: ApiConstants.DefaultPort,
