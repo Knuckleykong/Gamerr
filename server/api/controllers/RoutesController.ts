@@ -1,7 +1,7 @@
 import { ApiRoutes } from '../ApiRoutes';
 import { ControllerCodes } from './ControllerCodes';
-import { ControllerMessages } from './ControllerMessages';
 import { ControllerResponse } from './ControllerResponse';
+import { RouteMessages } from '../../constants/RouteMessages';
 import { RoutesResponse } from './RoutesResponse';
 
 export class RoutesController {
@@ -24,7 +24,7 @@ export class RoutesController {
         error: {
           code: ControllerCodes.HealthError,
           message:
-            ControllerMessages.HealthUnavailable,
+            RouteMessages.UnableToRetrieveRoutes,
         },
       };
     }
