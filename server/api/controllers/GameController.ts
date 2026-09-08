@@ -21,10 +21,13 @@ export class GamesController {
       };
     }
 
+    const games = result.data ?? [];
+
     return {
       success: true,
       data: {
-        games: result.data ?? [],
+        games,
+        count: games.length,
       },
     };
   }
