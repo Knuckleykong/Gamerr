@@ -1,6 +1,7 @@
 import { ApiConfig } from './ApiConfig';
 import { ApiRoutes } from './ApiRoutes';
 import { ApiStatus } from './ApiStatus';
+import { ApiStatusConstants } from '../constants/ApiStatusConstants';
 
 export class ApiServer {
   private routes = new ApiRoutes();
@@ -25,7 +26,7 @@ export class ApiServer {
     }
 
     return {
-      running: true,
+      running: ApiStatusConstants.Running,
       port: config.port,
     };
   }
