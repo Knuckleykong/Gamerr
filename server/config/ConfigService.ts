@@ -1,5 +1,6 @@
 import { AppConfig } from './AppConfig';
 import { LibraryConfig } from './LibraryConfig';
+import { ScanConstants } from '../constants/ScanConstants';
 
 export class ConfigService {
   getAppConfig(): AppConfig {
@@ -11,7 +12,7 @@ export class ConfigService {
 
   getLibraryConfig(): LibraryConfig {
     return {
-      paths: [],
+      paths: ScanConstants.DefaultLibraryPaths,
     };
   }
 }
