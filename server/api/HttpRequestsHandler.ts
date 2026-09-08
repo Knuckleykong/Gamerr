@@ -1,8 +1,8 @@
+import { HttpMessages } from '../constants/HttpMessages';
+
 import { HttpResponse } from './HttpResponse';
 import { HttpResponseFactory } from './HttpResponseFactory';
 import { HttpServer } from './HttpServer';
-
-import { HttpMessages } from '../constants/HttpMessages';
 
 export class HttpRequestHandler {
   private httpServer =
@@ -12,18 +12,19 @@ export class HttpRequestHandler {
     method: string,
     path: string
   ): Promise<HttpResponse> {
-    const response =
+    const result =
       await this.httpServer.handleRequest(
         method,
         path
       );
 
-    if (!response) {
+    if (!result.found) {
       return HttpResponseFactory.notFound({
         message: HttpMessages.RouteNotFound,
       });
     }
 
-    return response;
+    return result.response!;
   }
 }
+``
