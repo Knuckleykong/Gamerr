@@ -1,14 +1,14 @@
 import { SettingsService } from '../../services/SettingsService';
 import { ControllerResponse } from './ControllerResponse';
 import { ControllerCodes } from './ControllerCodes';
-import { Setting } from '../../types/Setting';
+import { SettingsResponse } from './SettingsResponse';
 
 export class SettingsController {
   private settingsService = new SettingsService();
 
   async getSetting(
     key: string
-  ): Promise<ControllerResponse<Setting>> {
+  ): Promise<ControllerResponse<SettingsResponse>> {
     const result =
       await this.settingsService.getValue(key);
 
@@ -24,14 +24,16 @@ export class SettingsController {
 
     return {
       success: true,
-      data: result.data,
+      data: {
+        setting: result.data!,
+      },
     };
   }
 
   async setSetting(
     key: string,
     value: string
-  ): Promise<ControllerResponse<Setting>> {
+  ): Promise<ControllerResponse<SettingsResponse>> {
     const result =
       await this.settingsService.setValue(
         key,
@@ -50,7 +52,9 @@ export class SettingsController {
 
     return {
       success: true,
-      data: result.data,
+      data: {
+        setting: result.data!,
+      },
     };
   }
 }
