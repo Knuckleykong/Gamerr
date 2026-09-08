@@ -19,7 +19,7 @@ export class Application {
 
   async start() {
     console.log(
-      `Starting ${ApplicationConstants.Name}...`
+      `Starting ${ApplicationConstants.name}...`
     );
 
     await this.databaseInitializer.initialize();
@@ -35,7 +35,7 @@ export class Application {
     const status: ApplicationStatus = {
       health,
       setupComplete: setupState.isConfigured,
-      version: ApplicationConstants.Version,
+      version: ApplicationConstants.version,
     };
 
     console.log('Application Status');
@@ -54,7 +54,7 @@ export class Application {
 
     if (!status.setupComplete) {
       console.log(
-        `${ApplicationConstants.Name} is not configured. Please complete setup.`
+        `${ApplicationConstants.name} is not configured. Please complete setup.`
       );
 
       return;
