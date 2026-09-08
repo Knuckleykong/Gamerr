@@ -12,14 +12,19 @@ import { DatabaseController } from './controllers/DatabaseController';
 import { GamesController } from './controllers/GamesController';
 import { GameStatisticsController } from './controllers/GameStatisticsController';
 import { HealthController } from './controllers/HealthController';
+import { RoutesController } from './controllers/RoutesController';
 import { SettingsController } from './controllers/SettingsController';
 
 export class ApiRoutes {
   private apiController = new ApiController();
-  private healthController = new HealthController();
+  private routesController =
+    new RoutesController();
+  private healthController =
+    new HealthController();
   private applicationController =
     new ApplicationController();
-  private gamesController = new GamesController();
+  private gamesController =
+    new GamesController();
   private gameStatisticsController =
     new GameStatisticsController();
   private settingsController =
@@ -34,6 +39,12 @@ export class ApiRoutes {
         path: `${ApiConstants.BasePath}/api`,
         handler: () =>
           this.apiController.getApi(),
+      },
+      {
+        method: ApiMethods.GET,
+        path: `${ApiConstants.BasePath}/routes`,
+        handler: () =>
+          this.routesController.getRoutes(),
       },
       {
         method: ApiMethods.GET,
