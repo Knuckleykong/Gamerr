@@ -1,4 +1,5 @@
 import { ControllerResponse } from './ControllerResponse';
+import { ControllerCodes } from './ControllerCodes';
 
 export class HealthController {
   async getHealth(): Promise<
@@ -19,7 +20,7 @@ export class HealthController {
       return {
         success: false,
         error: {
-          code: 'HEALTH_ERROR',
+          code: ControllerCodes.HealthError,
           message: 'Unable to retrieve health status',
         },
       };
