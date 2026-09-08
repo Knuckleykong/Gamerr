@@ -1,3 +1,5 @@
+import { HttpLoggingMessages } from '../constants/HttpLoggingMessages';
+
 import { HttpLogResult } from '../types/HttpLogResult';
 import { HttpTransactionLog } from '../types/HttpTransactionLog';
 
@@ -9,6 +11,8 @@ export class HttpLoggingService {
 
     return {
       success: true,
+      message:
+        HttpLoggingMessages.LogSuccessful,
     };
   }
 }
