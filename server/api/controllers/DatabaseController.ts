@@ -27,7 +27,7 @@ export class DatabaseController {
       return {
         success: false,
         error: {
-          code: 'DATABASE_ERROR',
+          code: ControllerCodes.DatabaseError,
           message:
             'Unable to retrieve database information',
         },
