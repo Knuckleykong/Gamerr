@@ -1,6 +1,8 @@
 import { ApiMethods } from './ApiMethods';
-import { ApiConstants } from '../constants/ApiConstants';
 import { RouteHandler } from './RouteHandler';
+
+import { ApiConstants } from '../constants/ApiConstants';
+import { SettingsConstants } from '../constants/SettingsConstants';
 
 import { HealthController } from './controllers/HealthController';
 import { GamesController } from './controllers/GamesController';
@@ -49,7 +51,7 @@ export class ApiRoutes {
         path: `${ApiConstants.BasePath}/settings`,
         handler: () =>
           this.settingsController.getSetting(
-            'library.paths'
+            SettingsConstants.LibraryPaths
           ),
       },
     ];
