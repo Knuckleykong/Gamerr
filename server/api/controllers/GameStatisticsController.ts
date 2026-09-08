@@ -1,6 +1,7 @@
 import { GameStatisticsService } from '../../services/GameStatisticsService';
-import { ControllerResponse } from './ControllerResponse';
 import { ControllerCodes } from './ControllerCodes';
+import { ControllerMessages } from './ControllerMessages';
+import { ControllerResponse } from './ControllerResponse';
 import { GameSummaryResponse } from './GameSummaryResponse';
 
 export class GameStatisticsController {
@@ -26,7 +27,7 @@ export class GameStatisticsController {
         error: {
           code: ControllerCodes.GameError,
           message:
-            'Unable to retrieve game statistics',
+            ControllerMessages.GameStatisticsUnavailable,
         },
       };
     }
