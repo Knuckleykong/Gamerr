@@ -1,5 +1,6 @@
 import { SettingsService } from '../../services/SettingsService';
 import { ControllerResponse } from './ControllerResponse';
+import { ControllerCodes } from './ControllerCodes';
 import { Setting } from '../../types/Setting';
 
 export class SettingsController {
@@ -14,7 +15,10 @@ export class SettingsController {
     if (!result.success) {
       return {
         success: false,
-        error: result.error,
+        error: {
+          code: ControllerCodes.SettingError,
+          message: result.error ?? 'Unknown error',
+        },
       };
     }
 
@@ -37,7 +41,10 @@ export class SettingsController {
     if (!result.success) {
       return {
         success: false,
-        error: result.error,
+        error: {
+          code: ControllerCodes.SettingError,
+          message: result.error ?? 'Unknown error',
+        },
       };
     }
 
