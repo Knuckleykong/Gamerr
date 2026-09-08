@@ -3,6 +3,7 @@ import { createServer } from 'http';
 import { HttpContentTypes } from '../constants/HttpContentTypes';
 import { HttpHeaderNames } from '../constants/HttpHeaderNames';
 import { HttpServerMessages } from '../constants/HttpServerMessages';
+import { HttpTransactionMessages } from '../constants/HttpTransactionMessages';
 
 import { HttpRequestInfo } from '../types/HttpRequestInfo';
 import { HttpResponseInfo } from '../types/HttpResponseInfo';
@@ -19,6 +20,10 @@ export class NodeHttpServer {
   start(port: number): HttpServerStatus {
     const server = createServer(
       async (request, response) => {
+        console.log(
+          HttpTransactionMessages.ProcessingRequest
+        );
+
         const requestInfo: HttpRequestInfo =
           HttpContextFactory.createRequestInfo(
             request.method ?? 'GET',
