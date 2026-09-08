@@ -1,9 +1,11 @@
 import { createServer } from 'http';
 
 import { HttpServerMessages } from '../constants/HttpServerMessages';
-import { HttpServerStatus } from '../types/HttpServerStatus';
-
+import { HttpMethod } from './HttpMethod';
+import { HttpRequestContext } from './HttpRequestContext';
 import { HttpRequestHandler } from './HttpRequestHandler';
+
+import { HttpServerStatus } from '../types/HttpServerStatus';
 
 export class NodeHttpServer {
   private requestHandler =
@@ -12,10 +14,16 @@ export class NodeHttpServer {
   start(port: number): HttpServerStatus {
     const server = createServer(
       async (request, response) => {
+        const context: HttpRequestContext = {
+          method:
+            (request.method as HttpMethod) ??
+            'GET',
+          path: request.url ?? '/',
+        };
+
         const result =
           await this.requestHandler.handle(
-            request.method ?? 'GET',
-            request.url ?? '/'
+            context
           );
 
         response.writeHead(
