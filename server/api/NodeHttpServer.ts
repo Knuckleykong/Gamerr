@@ -55,9 +55,12 @@ export class NodeHttpServer {
           response: responseLog,
         };
 
-        this.httpLoggingService.log(
-          transactionLog
-        );
+        const logResult =
+          this.httpLoggingService.log(
+            transactionLog
+          );
+
+        console.log(logResult);
 
         const transaction: HttpTransactionInfo = {
           request: requestInfo,
