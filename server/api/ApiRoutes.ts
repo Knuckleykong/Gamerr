@@ -1,13 +1,18 @@
 import { ApiMethods } from './ApiMethods';
+import { RouteHandler } from './RouteHandler';
+
 import { HealthController } from './controllers/HealthController';
 import { GamesController } from './controllers/GamesController';
+import { GameStatisticsController } from './controllers/GameStatisticsController';
 import { SettingsController } from './controllers/SettingsController';
-import { RouteHandler } from './RouteHandler';
 
 export class ApiRoutes {
   private healthController = new HealthController();
   private gamesController = new GamesController();
-  private settingsController = new SettingsController();
+  private gameStatisticsController =
+    new GameStatisticsController();
+  private settingsController =
+    new SettingsController();
 
   getRoutes(): RouteHandler[] {
     return [
@@ -22,6 +27,12 @@ export class ApiRoutes {
         path: '/api/v1/games',
         handler: () =>
           this.gamesController.getGames(),
+      },
+      {
+        method: ApiMethods.GET,
+        path: '/api/v1/games/summary',
+        handler: () =>
+          this.gameStatisticsController.getSummary(),
       },
       {
         method: ApiMethods.GET,
