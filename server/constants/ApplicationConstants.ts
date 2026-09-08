@@ -1,4 +1,6 @@
-export const ApplicationConstants = {
-  Name: 'Gamerr',
-  Version: '0.1.0-alpha',
+import { ApplicationInfo } from '../types/ApplicationInfo';
+
+export const ApplicationConstants: ApplicationInfo = {
+  name: 'Gamerr',
+  version: '0.1.0-alpha',
 };
