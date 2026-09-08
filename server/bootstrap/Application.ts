@@ -24,7 +24,13 @@ export class Application {
       `Starting ${ApplicationConstants.name}...`
     );
 
-    await this.databaseInitializer.initialize();
+    const startupResult =
+      await this.databaseInitializer.initialize();
+
+    if (!startupResult.success) {
+      console.log(startupResult.message);
+      return;
+    }
 
     const appConfig =
       this.configService.getAppConfig();
