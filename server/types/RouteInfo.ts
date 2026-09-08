@@ -1,4 +1,6 @@
+import { HttpMethod } from '../api/HttpMethod';
+
 export interface RouteInfo {
-  method: string;
+  method: HttpMethod;
   path: string;
 }
