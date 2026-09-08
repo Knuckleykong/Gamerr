@@ -3,4 +3,5 @@ export const ControllerCodes = {
   GameError: 'GAME_ERROR',
   SettingError: 'SETTING_ERROR',
   DatabaseError: 'DATABASE_ERROR',
+  RouteError: 'ROUTE_ERROR',
 };
