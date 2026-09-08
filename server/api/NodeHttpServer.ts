@@ -1,6 +1,6 @@
 import { createServer } from 'http';
 
-import { ApiMessages } from '../constants/ApiMessages';
+import { HttpServerMessages } from '../constants/HttpServerMessages';
 import { HttpServerStatus } from '../types/HttpServerStatus';
 
 import { HttpRequestHandler } from './HttpRequestHandler';
@@ -34,7 +34,7 @@ export class NodeHttpServer {
 
     server.listen(port, () => {
       console.log(
-        `${ApiMessages.Listening} ${port}`
+        `${HttpServerMessages.Started}: ${port}`
       );
     });
 
