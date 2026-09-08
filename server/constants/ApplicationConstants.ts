@@ -1,8 +1,6 @@
-import { ApplicationInfo } from '../types/ApplicationInfo';
-import { ApplicationVersion } from '../types/ApplicationVersion';
+import { ApplicationMetadata } from '../types/ApplicationMetadata';
 
-export const ApplicationConstants:
-  ApplicationInfo & ApplicationVersion = {
+export const ApplicationConstants: ApplicationMetadata = {
   name: 'Gamerr',
   version: '0.1.0-alpha',
 };
