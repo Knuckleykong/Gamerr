@@ -1,8 +1,11 @@
 import prisma from '../database/client';
+import { PrismaConfig } from '../database/PrismaConfig';
 import { PrismaInfo } from '../types/PrismaInfo';
 import { PrismaStatus } from '../types/PrismaStatus';
 
 export class PrismaService {
+  private config = new PrismaConfig();
+
   async getStatus(): Promise<PrismaStatus> {
     try {
       await prisma.$queryRaw`SELECT 1`;
