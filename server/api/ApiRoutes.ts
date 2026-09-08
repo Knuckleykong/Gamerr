@@ -1,3 +1,4 @@
+import { ApiMethods } from './ApiMethods';
 import { HealthController } from './controllers/HealthController';
 import { GamesController } from './controllers/GamesController';
 import { SettingsController } from './controllers/SettingsController';
@@ -11,19 +12,19 @@ export class ApiRoutes {
   getRoutes(): RouteHandler[] {
     return [
       {
-        method: 'GET',
+        method: ApiMethods.GET,
         path: '/api/v1/health',
         handler: () =>
           this.healthController.getHealth(),
       },
       {
-        method: 'GET',
+        method: ApiMethods.GET,
         path: '/api/v1/games',
         handler: () =>
           this.gamesController.getGames(),
       },
       {
-        method: 'GET',
+        method: ApiMethods.GET,
         path: '/api/v1/settings',
         handler: () =>
           this.settingsController.getSetting(
