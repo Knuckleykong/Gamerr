@@ -1,6 +1,7 @@
 import { ApiMethods } from './ApiMethods';
 import { RouteHandler } from './RouteHandler';
 
+import { ApiRouteInfo } from '../types/ApiRouteInfo';
 import { RouteCollection } from '../types/RouteCollection';
 
 import { ApiConstants } from '../constants/ApiConstants';
@@ -22,8 +23,7 @@ export class ApiRoutes {
   private healthController = new HealthController();
   private applicationController =
     new ApplicationController();
-  private gamesController =
-    new GamesController();
+  private gamesController = new GamesController();
   private gameStatisticsController =
     new GameStatisticsController();
   private settingsController =
@@ -85,15 +85,3 @@ export class ApiRoutes {
       },
     ];
   }
-
-  getRouteCollection(): RouteCollection {
-    return {
-      routes: this.getRoutes().map(
-        ({ method, path }) => ({
-          method,
-          path,
-        })
-      ),
-    };
-  }
-}
