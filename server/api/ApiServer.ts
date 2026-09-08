@@ -5,6 +5,7 @@ import { ApiStatus } from './ApiStatus';
 import { ApiMessages } from '../constants/ApiMessages';
 import { ApiStatusConstants } from '../constants/ApiStatusConstants';
 
+import { ApiInfo } from '../types/ApiInfo';
 import { ApiResult } from '../types/ApiResult';
 
 export class ApiServer {
@@ -13,14 +14,14 @@ export class ApiServer {
   async start(
     config: ApiConfig
   ): Promise<ApiStatus> {
-    const result = await this.initialize(config);
+    const info = await this.getInfo(config);
 
     console.log(
-      `${ApiMessages.Starting} ${config.port}...`
+      `${ApiMessages.Starting} ${info.port}...`
     );
 
     console.log(
-      `${ApiMessages.RegisteredRoutes}: ${result.registeredRoutes}`
+      `${ApiMessages.RegisteredRoutes}: ${info.registeredRoutes}`
     );
 
     const routes = this.routes.getRoutes();
@@ -44,6 +45,17 @@ export class ApiServer {
 
     return {
       success: true,
+      registeredRoutes: routes.length,
+    };
+  }
+
+  async getInfo(
+    config: ApiConfig
+  ): Promise<ApiInfo> {
+    const routes = this.routes.getRoutes();
+
+    return {
+      port: config.port,
       registeredRoutes: routes.length,
     };
   }
