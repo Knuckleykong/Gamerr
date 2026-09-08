@@ -1,7 +1,10 @@
 import { ApiConfig } from './ApiConfig';
 import { ApiRoutes } from './ApiRoutes';
 import { ApiStatus } from './ApiStatus';
+
+import { ApiMessages } from '../constants/ApiMessages';
 import { ApiStatusConstants } from '../constants/ApiStatusConstants';
+
 import { ApiResult } from '../types/ApiResult';
 
 export class ApiServer {
@@ -13,11 +16,11 @@ export class ApiServer {
     const result = await this.initialize(config);
 
     console.log(
-      `API Server starting on port ${config.port}...`
+      `${ApiMessages.Starting} ${config.port}...`
     );
 
     console.log(
-      `Registered ${result.registeredRoutes} routes`
+      `${ApiMessages.RegisteredRoutes}: ${result.registeredRoutes}`
     );
 
     const routes = this.routes.getRoutes();
