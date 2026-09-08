@@ -4,6 +4,7 @@ import { RouteHandler } from './RouteHandler';
 import { RouteCollection } from '../types/RouteCollection';
 
 import { ApiConstants } from '../constants/ApiConstants';
+import { ApiRouteConstants } from '../constants/ApiRouteConstants';
 import { SettingsConstants } from '../constants/SettingsConstants';
 
 import { ApiController } from './controllers/ApiController';
@@ -17,10 +18,8 @@ import { SettingsController } from './controllers/SettingsController';
 
 export class ApiRoutes {
   private apiController = new ApiController();
-  private routesController =
-    new RoutesController();
-  private healthController =
-    new HealthController();
+  private routesController = new RoutesController();
+  private healthController = new HealthController();
   private applicationController =
     new ApplicationController();
   private gamesController =
@@ -36,49 +35,49 @@ export class ApiRoutes {
     return [
       {
         method: ApiMethods.GET,
-        path: `${ApiConstants.BasePath}/api`,
+        path: `${ApiConstants.BasePath}${ApiRouteConstants.Api}`,
         handler: () =>
           this.apiController.getApi(),
       },
       {
         method: ApiMethods.GET,
-        path: `${ApiConstants.BasePath}/routes`,
+        path: `${ApiConstants.BasePath}${ApiRouteConstants.Routes}`,
         handler: () =>
           this.routesController.getRoutes(),
       },
       {
         method: ApiMethods.GET,
-        path: `${ApiConstants.BasePath}/health`,
+        path: `${ApiConstants.BasePath}${ApiRouteConstants.Health}`,
         handler: () =>
           this.healthController.getHealth(),
       },
       {
         method: ApiMethods.GET,
-        path: `${ApiConstants.BasePath}/application`,
+        path: `${ApiConstants.BasePath}${ApiRouteConstants.Application}`,
         handler: () =>
           this.applicationController.getApplication(),
       },
       {
         method: ApiMethods.GET,
-        path: `${ApiConstants.BasePath}/database`,
+        path: `${ApiConstants.BasePath}${ApiRouteConstants.Database}`,
         handler: () =>
           this.databaseController.getDatabase(),
       },
       {
         method: ApiMethods.GET,
-        path: `${ApiConstants.BasePath}/games`,
+        path: `${ApiConstants.BasePath}${ApiRouteConstants.Games}`,
         handler: () =>
           this.gamesController.getGames(),
       },
       {
         method: ApiMethods.GET,
-        path: `${ApiConstants.BasePath}/games/summary`,
+        path: `${ApiConstants.BasePath}${ApiRouteConstants.GameSummary}`,
         handler: () =>
           this.gameStatisticsController.getSummary(),
       },
       {
         method: ApiMethods.GET,
-        path: `${ApiConstants.BasePath}/settings`,
+        path: `${ApiConstants.BasePath}${ApiRouteConstants.Settings}`,
         handler: () =>
           this.settingsController.getSetting(
             SettingsConstants.LibraryPaths
