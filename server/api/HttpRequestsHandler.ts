@@ -1,6 +1,8 @@
-import { HttpServer } from './HttpServer';
 import { HttpResponse } from './HttpResponse';
 import { HttpResponseFactory } from './HttpResponseFactory';
+import { HttpServer } from './HttpServer';
+
+import { HttpMessages } from '../constants/HttpMessages';
 
 export class HttpRequestHandler {
   private httpServer =
@@ -18,7 +20,7 @@ export class HttpRequestHandler {
 
     if (!response) {
       return HttpResponseFactory.notFound({
-        message: 'Route not found',
+        message: HttpMessages.RouteNotFound,
       });
     }
 
