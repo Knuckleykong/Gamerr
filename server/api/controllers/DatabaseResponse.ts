@@ -1,3 +1,7 @@
+import { DatabaseConfig } from '../../database/DatabaseConfig';
+import { DatabaseStatus } from '../../types/DatabaseStatus';
+
 export interface DatabaseResponse {
-  connected: boolean;
+  config: DatabaseConfig;
+  status: DatabaseStatus;
 }
