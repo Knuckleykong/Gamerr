@@ -60,7 +60,7 @@ export class NodeHttpServer {
             transactionLog
           );
 
-        console.log(logResult);
+        console.log(logResult.message);
 
         const transaction: HttpTransactionInfo = {
           request: requestInfo,
