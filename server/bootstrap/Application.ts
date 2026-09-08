@@ -56,5 +56,13 @@ export class Application {
     console.log(
       `Libraries Scanned: ${scanSummary.scannedPaths}`
     );
+
+    console.log(
+      `New Games Added: ${scanSummary.newGames}`
+    );
+
+    console.log(
+      `Games Skipped: ${scanSummary.skippedGames}`
+    );
   }
 }
