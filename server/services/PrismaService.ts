@@ -1,4 +1,5 @@
 import prisma from '../database/client';
+import { PrismaInfo } from '../types/PrismaInfo';
 import { PrismaStatus } from '../types/PrismaStatus';
 
 export class PrismaService {
@@ -16,5 +17,13 @@ export class PrismaService {
         connected: false,
       };
     }
+  }
+
+  async getInfo(): Promise<PrismaInfo> {
+    const status = await this.getStatus();
+
+    return {
+      status,
+    };
   }
 }
