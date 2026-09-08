@@ -3,6 +3,7 @@ import { ConfigService } from '../config/ConfigService';
 import { ApiConstants } from '../constants/ApiConstants';
 import { ApplicationConstants } from '../constants/ApplicationConstants';
 import { ApplicationMessages } from '../constants/ApplicationMessages';
+import { ApplicationStatusMessages } from '../constants/ApplicationStatusMessages';
 import { DatabaseInitializer } from '../database/DatabaseInitializer';
 import { HealthCheckService } from '../services/HealthCheckService';
 import { ScanService } from '../services/scanner/ScanService';
@@ -39,7 +40,9 @@ export class Application {
       version: ApplicationConstants.version,
     };
 
-    console.log('Application Status');
+    console.log(
+      ApplicationStatusMessages.Starting
+    );
     console.log(status);
 
     console.log(
@@ -50,7 +53,9 @@ export class Application {
       port: ApiConstants.DefaultPort,
     });
 
-    console.log('API Status');
+    console.log(
+      ApplicationStatusMessages.ApiStatus
+    );
     console.log(apiStatus);
 
     if (!status.setupComplete) {
@@ -69,7 +74,9 @@ export class Application {
         libraryConfig.paths
       );
 
-    console.log('Scan complete');
+    console.log(
+      ApplicationStatusMessages.ScanComplete
+    );
 
     console.log(
       `Games Found: ${scanSummary.totalGames}`
