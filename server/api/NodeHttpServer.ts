@@ -3,8 +3,11 @@ import { createServer } from 'http';
 import { HttpContentTypes } from '../constants/HttpContentTypes';
 import { HttpHeaderNames } from '../constants/HttpHeaderNames';
 import { HttpServerMessages } from '../constants/HttpServerMessages';
+
+import { HttpRequestInfo } from '../types/HttpRequestInfo';
 import { HttpResponseInfo } from '../types/HttpResponseInfo';
 import { HttpServerStatus } from '../types/HttpServerStatus';
+import { HttpTransactionInfo } from '../types/HttpTransactionInfo';
 
 import { HttpContextFactory } from './HttpContextFactory';
 import { HttpRequestHandler } from './HttpRequestHandler';
@@ -16,7 +19,7 @@ export class NodeHttpServer {
   start(port: number): HttpServerStatus {
     const server = createServer(
       async (request, response) => {
-        const requestInfo =
+        const requestInfo: HttpRequestInfo =
           HttpContextFactory.createRequestInfo(
             request.method ?? 'GET',
             request.url ?? '/'
@@ -29,8 +32,14 @@ export class NodeHttpServer {
             ),
         };
 
+        const transaction: HttpTransactionInfo = {
+          request: requestInfo,
+          response: responseInfo,
+        };
+
         response.writeHead(
-          responseInfo.response.statusCode,
+          transaction.response.response
+            .statusCode,
           {
             [HttpHeaderNames.ContentType]:
               HttpContentTypes.Json,
@@ -39,7 +48,7 @@ export class NodeHttpServer {
 
         response.end(
           JSON.stringify(
-            responseInfo.response.body
+            transaction.response.response.body
           )
         );
       }
