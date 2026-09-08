@@ -1,18 +1,18 @@
 import { ApplicationConstants } from '../../constants/ApplicationConstants';
+import { ApplicationSummaryResponse } from './ApplicationSummaryResponse';
 import { ControllerCodes } from './ControllerCodes';
-import { ControllerResponse } from './ControllerResponse';
 import { ControllerMessages } from './ControllerMessages';
-import { ApplicationResponse } from './ApplicationResponse';
+import { ControllerResponse } from './ControllerResponse';
 
 export class ApplicationController {
   async getApplication(): Promise<
-    ControllerResponse<ApplicationResponse>
+    ControllerResponse<ApplicationSummaryResponse>
   > {
     try {
       return {
         success: true,
         data: {
-          application: ApplicationConstants,
+          metadata: ApplicationConstants,
         },
       };
     } catch {
@@ -27,4 +27,3 @@ export class ApplicationController {
     }
   }
 }
-`
