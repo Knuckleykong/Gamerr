@@ -1,18 +1,16 @@
+import { HttpRequestContext } from './HttpRequestContext';
 import { HttpRouter } from './HttpRouter';
+
 import { HttpRouteResult } from '../types/HttpRouteResult';
 
 export class HttpServer {
   private router = new HttpRouter();
 
   async handleRequest(
-    method: string,
-    path: string
+    context: HttpRequestContext
   ): Promise<HttpRouteResult> {
     const route =
-      this.router.findRoute(
-        method,
-        path
-      );
+      this.router.findRoute(context);
 
     if (!route) {
       return {
