@@ -1,11 +1,16 @@
+import { HttpStatusMessages } from '../constants/HttpStatusMessages';
+
 import { HttpResponse } from './HttpResponse';
 import { HttpStatusCodes } from './HttpStatusCodes';
 
 export class HttpResponseFactory {
-  static ok(body: unknown): HttpResponse {
+  static ok(body?: unknown): HttpResponse {
     return {
       statusCode: HttpStatusCodes.OK,
-      body,
+      body:
+        body ?? {
+          message: HttpStatusMessages.Ok,
+        },
     };
   }
 
@@ -19,21 +24,29 @@ export class HttpResponseFactory {
   }
 
   static notFound(
-    body: unknown
+    body?: unknown
   ): HttpResponse {
     return {
       statusCode: HttpStatusCodes.NotFound,
-      body,
+      body:
+        body ?? {
+          message:
+            HttpStatusMessages.NotFound,
+        },
     };
   }
 
   static internalServerError(
-    body: unknown
+    body?: unknown
   ): HttpResponse {
     return {
       statusCode:
         HttpStatusCodes.InternalServerError,
-      body,
+      body:
+        body ?? {
+          message:
+            HttpStatusMessages.InternalServerError,
+        },
     };
   }
 }
