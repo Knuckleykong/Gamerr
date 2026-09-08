@@ -1,6 +1,7 @@
 import { DatabaseConfig } from '../database/DatabaseConfig';
 import { DatabaseConstants } from '../database/DatabaseConstants';
 import { DatabaseStatus } from '../types/DatabaseStatus';
+import { DatabaseVersion } from '../types/DatabaseVersion';
 import { PrismaService } from './PrismaService';
 
 export class DatabaseService {
@@ -14,6 +15,12 @@ export class DatabaseService {
 
   getConfig(): DatabaseConfig {
     return this.config;
+  }
+
+  getVersion(): DatabaseVersion {
+    return {
+      version: '0.1.0',
+    };
   }
 
   async getStatus(): Promise<DatabaseStatus> {
