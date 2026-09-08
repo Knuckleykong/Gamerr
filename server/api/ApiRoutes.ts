@@ -1,4 +1,5 @@
 import { ApiMethods } from './ApiMethods';
+import { ApiConstants } from '../constants/ApiConstants';
 import { RouteHandler } from './RouteHandler';
 
 import { HealthController } from './controllers/HealthController';
@@ -21,31 +22,31 @@ export class ApiRoutes {
     return [
       {
         method: ApiMethods.GET,
-        path: '/api/v1/health',
+        path: `${ApiConstants.BasePath}/health`,
         handler: () =>
           this.healthController.getHealth(),
       },
       {
         method: ApiMethods.GET,
-        path: '/api/v1/database',
+        path: `${ApiConstants.BasePath}/database`,
         handler: () =>
           this.databaseController.getDatabase(),
       },
       {
         method: ApiMethods.GET,
-        path: '/api/v1/games',
+        path: `${ApiConstants.BasePath}/games`,
         handler: () =>
           this.gamesController.getGames(),
       },
       {
         method: ApiMethods.GET,
-        path: '/api/v1/games/summary',
+        path: `${ApiConstants.BasePath}/games/summary`,
         handler: () =>
           this.gameStatisticsController.getSummary(),
       },
       {
         method: ApiMethods.GET,
-        path: '/api/v1/settings',
+        path: `${ApiConstants.BasePath}/settings`,
         handler: () =>
           this.settingsController.getSetting(
             'library.paths'
