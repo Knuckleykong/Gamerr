@@ -1,9 +1,14 @@
 import { Application } from './bootstrap/Application';
 
 async function main() {
-  const app = new Application();
+  try {
+    const app = new Application();
 
-  await app.start();
+    await app.start();
+  } catch (error) {
+    console.error('Failed to start Gamerr', error);
+    process.exit(1);
+  }
 }
 
 main();
