@@ -8,8 +8,10 @@ import { HttpTransactionMessages } from '../constants/HttpTransactionMessages';
 import { HttpRequestInfo } from '../types/HttpRequestInfo';
 import { HttpRequestLog } from '../types/HttpRequestLog';
 import { HttpResponseInfo } from '../types/HttpResponseInfo';
+import { HttpResponseLog } from '../types/HttpResponseLog';
 import { HttpServerStatus } from '../types/HttpServerStatus';
 import { HttpTransactionInfo } from '../types/HttpTransactionInfo';
+import { HttpTransactionLog } from '../types/HttpTransactionLog';
 
 import { HttpContextFactory } from './HttpContextFactory';
 import { HttpRequestHandler } from './HttpRequestHandler';
@@ -36,14 +38,24 @@ export class NodeHttpServer {
           timestamp: new Date(),
         };
 
-        console.log(requestLog);
-
         const responseInfo: HttpResponseInfo = {
           response:
             await this.requestHandler.handle(
               requestInfo.request
             ),
         };
+
+        const responseLog: HttpResponseLog = {
+          response: responseInfo,
+          timestamp: new Date(),
+        };
+
+        const transactionLog: HttpTransactionLog = {
+          request: requestLog,
+          response: responseLog,
+        };
+
+        console.log(transactionLog);
 
         const transaction: HttpTransactionInfo = {
           request: requestInfo,
