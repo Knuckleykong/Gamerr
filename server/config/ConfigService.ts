@@ -9,7 +9,9 @@ export class ConfigService {
   getAppConfig(): AppConfig {
     return {
       port: ApiConstants.DefaultPort,
-      environment: EnvironmentConstants.Development,
+      environment: {
+        name: EnvironmentConstants.Development,
+      },
     };
   }
 
