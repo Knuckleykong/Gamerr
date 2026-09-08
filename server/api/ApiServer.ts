@@ -38,9 +38,12 @@ export class ApiServer {
       );
     }
 
-    this.nodeHttpServer.start(
-      config.port
-    );
+    const serverStatus =
+      this.nodeHttpServer.start(
+        config.port
+      );
+
+    console.log(serverStatus);
 
     return {
       running: ApiStatusConstants.Running,
@@ -51,7 +54,8 @@ export class ApiServer {
   async initialize(
     config: ApiConfig
   ): Promise<ApiResult> {
-    const summary = this.getRouteSummary();
+    const summary =
+      this.getRouteSummary();
 
     return {
       success: true,
@@ -63,7 +67,8 @@ export class ApiServer {
   async getInfo(
     config: ApiConfig
   ): Promise<ApiInfo> {
-    const summary = this.getRouteSummary();
+    const summary =
+      this.getRouteSummary();
 
     return {
       port: config.port,
