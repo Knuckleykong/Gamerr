@@ -2,6 +2,7 @@ import { ApiServer } from '../api/ApiServer';
 import { ConfigService } from '../config/ConfigService';
 import { ApiConstants } from '../constants/ApiConstants';
 import { ApplicationConstants } from '../constants/ApplicationConstants';
+import { ApplicationMessages } from '../constants/ApplicationMessages';
 import { DatabaseInitializer } from '../database/DatabaseInitializer';
 import { HealthCheckService } from '../services/HealthCheckService';
 import { ScanService } from '../services/scanner/ScanService';
@@ -54,7 +55,7 @@ export class Application {
 
     if (!status.setupComplete) {
       console.log(
-        `${ApplicationConstants.name} is not configured. Please complete setup.`
+        ApplicationMessages.NotConfigured
       );
 
       return;
