@@ -5,6 +5,7 @@ import { HealthController } from './controllers/HealthController';
 import { GamesController } from './controllers/GamesController';
 import { GameStatisticsController } from './controllers/GameStatisticsController';
 import { SettingsController } from './controllers/SettingsController';
+import { DatabaseController } from './controllers/DatabaseController';
 
 export class ApiRoutes {
   private healthController = new HealthController();
@@ -13,6 +14,8 @@ export class ApiRoutes {
     new GameStatisticsController();
   private settingsController =
     new SettingsController();
+  private databaseController =
+    new DatabaseController();
 
   getRoutes(): RouteHandler[] {
     return [
@@ -21,6 +24,12 @@ export class ApiRoutes {
         path: '/api/v1/health',
         handler: () =>
           this.healthController.getHealth(),
+      },
+      {
+        method: ApiMethods.GET,
+        path: '/api/v1/database',
+        handler: () =>
+          this.databaseController.getDatabase(),
       },
       {
         method: ApiMethods.GET,
