@@ -1,5 +1,6 @@
 import { createServer } from 'http';
 
+import { HttpContentTypes } from '../constants/HttpContentTypes';
 import { HttpServerMessages } from '../constants/HttpServerMessages';
 import { HttpServerStatus } from '../types/HttpServerStatus';
 
@@ -28,7 +29,7 @@ export class NodeHttpServer {
           result.statusCode,
           {
             'Content-Type':
-              'application/json',
+              HttpContentTypes.Json,
           }
         );
 
