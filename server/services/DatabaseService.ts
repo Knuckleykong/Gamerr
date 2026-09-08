@@ -1,5 +1,6 @@
 import { DatabaseConfig } from '../database/DatabaseConfig';
 import { DatabaseConstants } from '../database/DatabaseConstants';
+import { DatabaseVersionConstants } from '../constants/DatabaseVersionConstants';
 import { DatabaseStatus } from '../types/DatabaseStatus';
 import { DatabaseVersion } from '../types/DatabaseVersion';
 import { PrismaService } from './PrismaService';
@@ -19,7 +20,7 @@ export class DatabaseService {
 
   getVersion(): DatabaseVersion {
     return {
-      version: '0.1.0',
+      version: DatabaseVersionConstants.Current,
     };
   }
 
