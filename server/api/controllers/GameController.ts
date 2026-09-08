@@ -1,5 +1,6 @@
 import { GameService } from '../../services/GameService';
 import { ControllerResponse } from './ControllerResponse';
+import { ControllerCodes } from './ControllerCodes';
 import { Game } from '../../types/Game';
 
 export class GamesController {
@@ -11,7 +12,10 @@ export class GamesController {
     if (!result.success) {
       return {
         success: false,
-        error: result.error,
+        error: {
+          code: ControllerCodes.GameError,
+          message: result.error ?? 'Unknown error',
+        },
       };
     }
 
