@@ -1,8 +1,18 @@
+import { ControllerResponse } from './ControllerResponse';
+
 export class HealthController {
-  async getHealth() {
+  async getHealth(): Promise<
+    ControllerResponse<{
+      status: string;
+      service: string;
+    }>
+  > {
     return {
-      status: 'healthy',
-      service: 'Gamerr',
+      success: true,
+      data: {
+        status: 'healthy',
+        service: 'Gamerr',
+      },
     };
   }
 }
