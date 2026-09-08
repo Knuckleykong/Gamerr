@@ -5,6 +5,7 @@ import { ApiConstants } from '../constants/ApiConstants';
 import { SettingsConstants } from '../constants/SettingsConstants';
 
 import { HealthController } from './controllers/HealthController';
+import { ApplicationController } from './controllers/ApplicationController';
 import { GamesController } from './controllers/GamesController';
 import { GameStatisticsController } from './controllers/GameStatisticsController';
 import { SettingsController } from './controllers/SettingsController';
@@ -12,6 +13,8 @@ import { DatabaseController } from './controllers/DatabaseController';
 
 export class ApiRoutes {
   private healthController = new HealthController();
+  private applicationController =
+    new ApplicationController();
   private gamesController = new GamesController();
   private gameStatisticsController =
     new GameStatisticsController();
@@ -27,6 +30,12 @@ export class ApiRoutes {
         path: `${ApiConstants.BasePath}/health`,
         handler: () =>
           this.healthController.getHealth(),
+      },
+      {
+        method: ApiMethods.GET,
+        path: `${ApiConstants.BasePath}/application`,
+        handler: () =>
+          this.applicationController.getApplication(),
       },
       {
         method: ApiMethods.GET,
