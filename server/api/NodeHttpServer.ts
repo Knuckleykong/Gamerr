@@ -6,6 +6,7 @@ import { HttpServerMessages } from '../constants/HttpServerMessages';
 import { HttpTransactionMessages } from '../constants/HttpTransactionMessages';
 
 import { HttpRequestInfo } from '../types/HttpRequestInfo';
+import { HttpRequestLog } from '../types/HttpRequestLog';
 import { HttpResponseInfo } from '../types/HttpResponseInfo';
 import { HttpServerStatus } from '../types/HttpServerStatus';
 import { HttpTransactionInfo } from '../types/HttpTransactionInfo';
@@ -29,6 +30,13 @@ export class NodeHttpServer {
             request.method ?? 'GET',
             request.url ?? '/'
           );
+
+        const requestLog: HttpRequestLog = {
+          request: requestInfo,
+          timestamp: new Date(),
+        };
+
+        console.log(requestLog);
 
         const responseInfo: HttpResponseInfo = {
           response:
