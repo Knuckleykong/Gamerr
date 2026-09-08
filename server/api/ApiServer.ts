@@ -18,6 +18,12 @@ export class ApiServer {
       `Registered ${routes.length} routes`
     );
 
+    for (const route of routes) {
+      console.log(
+        `${route.method} ${route.path}`
+      );
+    }
+
     return {
       running: true,
       port: config.port,
