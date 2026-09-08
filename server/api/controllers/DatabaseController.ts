@@ -4,7 +4,8 @@ import { ControllerResponse } from './ControllerResponse';
 import { DatabaseResponse } from './DatabaseResponse';
 
 export class DatabaseController {
-  private databaseService = new DatabaseService();
+  private databaseService =
+    new DatabaseService();
 
   async getDatabase(): Promise<
     ControllerResponse<DatabaseResponse>
@@ -16,11 +17,15 @@ export class DatabaseController {
       const status =
         await this.databaseService.getStatus();
 
+      const version =
+        this.databaseService.getVersion();
+
       return {
         success: true,
         data: {
           config,
           status,
+          version,
         },
       };
     } catch {
