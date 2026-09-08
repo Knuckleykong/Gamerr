@@ -34,3 +34,13 @@
 - Multi-user support
 - Notifications
 - Play tracking
+
+
+Future Feature: Library Setup Wizard
+
+Requirements:
+- Add library path(s)
+- Browse filesystem
+- Validate paths exist
+- Test read permissions
+- Support multiple libraries
