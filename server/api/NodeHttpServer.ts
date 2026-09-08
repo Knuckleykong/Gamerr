@@ -3,6 +3,7 @@ import { createServer } from 'http';
 import { HttpContentTypes } from '../constants/HttpContentTypes';
 import { HttpHeaderNames } from '../constants/HttpHeaderNames';
 import { HttpServerMessages } from '../constants/HttpServerMessages';
+import { HttpResponseInfo } from '../types/HttpResponseInfo';
 import { HttpServerStatus } from '../types/HttpServerStatus';
 
 import { HttpContextFactory } from './HttpContextFactory';
@@ -21,13 +22,15 @@ export class NodeHttpServer {
             request.url ?? '/'
           );
 
-        const result =
-          await this.requestHandler.handle(
-            requestInfo.request
-          );
+        const responseInfo: HttpResponseInfo = {
+          response:
+            await this.requestHandler.handle(
+              requestInfo.request
+            ),
+        };
 
         response.writeHead(
-          result.statusCode,
+          responseInfo.response.statusCode,
           {
             [HttpHeaderNames.ContentType]:
               HttpContentTypes.Json,
@@ -35,7 +38,9 @@ export class NodeHttpServer {
         );
 
         response.end(
-          JSON.stringify(result.body)
+          JSON.stringify(
+            responseInfo.response.body
+          )
         );
       }
     );
