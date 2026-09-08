@@ -43,20 +43,26 @@ export class ApiRoutes {
       {
         method: ApiMethods.GET,
         path: `${ApiConstants.BasePath}${ApiRouteConstants.Api}`,
-        handler: () =>
-          this.apiController.getApi(),
+        handler: async () =>
+          ControllerResponseMapper.map(
+            await this.apiController.getApi()
+          ),
       },
       {
         method: ApiMethods.GET,
         path: `${ApiConstants.BasePath}${ApiRouteConstants.Routes}`,
-        handler: () =>
-          this.routesController.getRoutes(),
+        handler: async () =>
+          ControllerResponseMapper.map(
+            await this.routesController.getRoutes()
+          ),
       },
       {
         method: ApiMethods.GET,
         path: `${ApiConstants.BasePath}${ApiRouteConstants.Routes}/summary`,
-        handler: () =>
-          this.routesSummaryController.getSummary(),
+        handler: async () =>
+          ControllerResponseMapper.map(
+            await this.routesSummaryController.getSummary()
+          ),
       },
       {
         method: ApiMethods.GET,
@@ -69,33 +75,43 @@ export class ApiRoutes {
       {
         method: ApiMethods.GET,
         path: `${ApiConstants.BasePath}${ApiRouteConstants.Application}`,
-        handler: () =>
-          this.applicationController.getApplication(),
+        handler: async () =>
+          ControllerResponseMapper.map(
+            await this.applicationController.getApplication()
+          ),
       },
       {
         method: ApiMethods.GET,
         path: `${ApiConstants.BasePath}${ApiRouteConstants.Database}`,
-        handler: () =>
-          this.databaseController.getDatabase(),
+        handler: async () =>
+          ControllerResponseMapper.map(
+            await this.databaseController.getDatabase()
+          ),
       },
       {
         method: ApiMethods.GET,
         path: `${ApiConstants.BasePath}${ApiRouteConstants.Games}`,
-        handler: () =>
-          this.gamesController.getGames(),
+        handler: async () =>
+          ControllerResponseMapper.map(
+            await this.gamesController.getGames()
+          ),
       },
       {
         method: ApiMethods.GET,
         path: `${ApiConstants.BasePath}${ApiRouteConstants.GameSummary}`,
-        handler: () =>
-          this.gameStatisticsController.getSummary(),
+        handler: async () =>
+          ControllerResponseMapper.map(
+            await this.gameStatisticsController.getSummary()
+          ),
       },
       {
         method: ApiMethods.GET,
         path: `${ApiConstants.BasePath}${ApiRouteConstants.Settings}`,
-        handler: () =>
-          this.settingsController.getSetting(
-            SettingsConstants.LibraryPaths
+        handler: async () =>
+          ControllerResponseMapper.map(
+            await this.settingsController.getSetting(
+              SettingsConstants.LibraryPaths
+            )
           ),
       },
     ];
