@@ -27,8 +27,8 @@ export class HealthController {
         success: true,
         data: {
           status: HealthConstants.Healthy,
-          service: ApplicationConstants.Name,
-          version: ApplicationConstants.Version,
+          service: ApplicationConstants.name,
+          version: ApplicationConstants.version,
           database: {
             config,
             status,
