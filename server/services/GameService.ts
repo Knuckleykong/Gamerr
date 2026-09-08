@@ -1,13 +1,13 @@
-import prisma from '../database/client';
+import { GameRepository } from '../repositories/GameRepository';
 
 export class GameService {
+  private gameRepository = new GameRepository();
+
   async getAllGames() {
-    return prisma.game.findMany();
+    return this.gameRepository.getAll();
   }
 
   async getGameById(id: number) {
-    return prisma.game.findUnique({
-      where: { id },
-    });
+    return this.gameRepository.getById(id);
   }
 }
