@@ -46,6 +46,33 @@ export class GameRepository {
     }
   }
 
+  async getByPath(
+    path: string
+  ): Promise<RepositoryResult<Game>> {
+    try {
+      const game = await prisma.game.findUnique({
+        where: { path },
+      });
+
+      if (!game) {
+        return {
+          success: false,
+          error: 'Game not found',
+        };
+      }
+
+      return {
+        success: true,
+        data: game,
+      };
+    } catch (error) {
+      return {
+        success: false,
+        error: String(error),
+      };
+    }
+  }
+
   async create(
     game: Omit<Game, 'id' | 'createdAt' | 'updatedAt'>
   ): Promise<RepositoryResult<Game>> {
