@@ -1,6 +1,7 @@
 import { createServer } from 'http';
 
 import { ApiMessages } from '../constants/ApiMessages';
+import { HttpServerStatus } from '../types/HttpServerStatus';
 
 import { HttpRequestHandler } from './HttpRequestHandler';
 
@@ -8,7 +9,7 @@ export class NodeHttpServer {
   private requestHandler =
     new HttpRequestHandler();
 
-  start(port: number): void {
+  start(port: number): HttpServerStatus {
     const server = createServer(
       async (request, response) => {
         const result =
@@ -36,5 +37,10 @@ export class NodeHttpServer {
         `${ApiMessages.Listening} ${port}`
       );
     });
+
+    return {
+      listening: true,
+      port,
+    };
   }
 }
