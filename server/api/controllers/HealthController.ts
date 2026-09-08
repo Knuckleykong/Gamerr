@@ -1,7 +1,8 @@
-import { ControllerResponse } from './ControllerResponse';
-import { ControllerCodes } from './ControllerCodes';
-import { HealthResponse } from './HealthResponse';
 import { DatabaseService } from '../../services/DatabaseService';
+import { ApplicationConstants } from '../../constants/ApplicationConstants';
+import { ControllerCodes } from './ControllerCodes';
+import { ControllerResponse } from './ControllerResponse';
+import { HealthResponse } from './HealthResponse';
 
 export class HealthController {
   private databaseService =
@@ -11,17 +12,25 @@ export class HealthController {
     ControllerResponse<HealthResponse>
   > {
     try {
-      const databaseStatus =
+      const config =
+        this.databaseService.getConfig();
+
+      const status =
         await this.databaseService.getStatus();
+
+      const version =
+        this.databaseService.getVersion();
 
       return {
         success: true,
         data: {
           status: 'healthy',
-          service: 'Gamerr',
+          service: ApplicationConstants.Name,
+          version: ApplicationConstants.Version,
           database: {
-            connected:
-              databaseStatus.connected,
+            config,
+            status,
+            version,
           },
         },
       };
