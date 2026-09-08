@@ -3,7 +3,6 @@ import { createServer } from 'http';
 import { HttpContentTypes } from '../constants/HttpContentTypes';
 import { HttpHeaderNames } from '../constants/HttpHeaderNames';
 import { HttpServerMessages } from '../constants/HttpServerMessages';
-import { HttpTransactionMessages } from '../constants/HttpTransactionMessages';
 
 import { HttpRequestInfo } from '../types/HttpRequestInfo';
 import { HttpRequestLog } from '../types/HttpRequestLog';
@@ -16,17 +15,18 @@ import { HttpTransactionLog } from '../types/HttpTransactionLog';
 import { HttpContextFactory } from './HttpContextFactory';
 import { HttpRequestHandler } from './HttpRequestHandler';
 
+import { HttpLoggingService } from '../services/HttpLoggingService';
+
 export class NodeHttpServer {
   private requestHandler =
     new HttpRequestHandler();
 
+  private httpLoggingService =
+    new HttpLoggingService();
+
   start(port: number): HttpServerStatus {
     const server = createServer(
       async (request, response) => {
-        console.log(
-          HttpTransactionMessages.ProcessingRequest
-        );
-
         const requestInfo: HttpRequestInfo =
           HttpContextFactory.createRequestInfo(
             request.method ?? 'GET',
@@ -55,7 +55,9 @@ export class NodeHttpServer {
           response: responseLog,
         };
 
-        console.log(transactionLog);
+        this.httpLoggingService.log(
+          transactionLog
+        );
 
         const transaction: HttpTransactionInfo = {
           request: requestInfo,
