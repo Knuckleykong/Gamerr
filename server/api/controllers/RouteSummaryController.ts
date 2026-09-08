@@ -1,7 +1,7 @@
 import { ApiRoutes } from '../ApiRoutes';
+import { RouteSummaryMessages } from '../../constants/RouteSummaryMessages';
 import { ControllerCodes } from './ControllerCodes';
 import { ControllerResponse } from './ControllerResponse';
-import { RouteMessages } from '../../constants/RouteMessages';
 import { RouteSummaryResponse } from './RouteSummaryResponse';
 
 export class RoutesSummaryController {
@@ -26,7 +26,7 @@ export class RoutesSummaryController {
         error: {
           code: ControllerCodes.RouteError,
           message:
-            RouteMessages.UnableToRetrieveRoutes,
+            RouteSummaryMessages.UnableToRetrieveRouteSummary,
         },
       };
     }
