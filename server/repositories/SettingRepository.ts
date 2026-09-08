@@ -4,7 +4,7 @@ import { RepositoryResult } from './RepositoryResult';
 export class SettingRepository {
   async getByKey(
     key: string
-  ): Promise<RepositoryResult<any>> {
+  ): Promise<RepositoryResult<Setting>> {
     try {
       const setting = await prisma.setting.findUnique({
         where: { key },
