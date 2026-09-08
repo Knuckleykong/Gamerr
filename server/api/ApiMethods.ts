@@ -3,4 +3,4 @@ export const ApiMethods = {
   POST: 'POST',
   PUT: 'PUT',
   DELETE: 'DELETE',
-};
+} as const;
