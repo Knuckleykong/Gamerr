@@ -1,16 +1,18 @@
 import { ApiMethods } from './ApiMethods';
 import { RouteHandler } from './RouteHandler';
 
+import { RouteCollection } from '../types/RouteCollection';
+
 import { ApiConstants } from '../constants/ApiConstants';
 import { SettingsConstants } from '../constants/SettingsConstants';
 
 import { ApiController } from './controllers/ApiController';
-import { HealthController } from './controllers/HealthController';
 import { ApplicationController } from './controllers/ApplicationController';
+import { DatabaseController } from './controllers/DatabaseController';
 import { GamesController } from './controllers/GamesController';
 import { GameStatisticsController } from './controllers/GameStatisticsController';
+import { HealthController } from './controllers/HealthController';
 import { SettingsController } from './controllers/SettingsController';
-import { DatabaseController } from './controllers/DatabaseController';
 
 export class ApiRoutes {
   private apiController = new ApiController();
@@ -72,5 +74,16 @@ export class ApiRoutes {
           ),
       },
     ];
+  }
+
+  getRouteCollection(): RouteCollection {
+    return {
+      routes: this.getRoutes().map(
+        ({ method, path }) => ({
+          method,
+          path,
+        })
+      ),
+    };
   }
 }
