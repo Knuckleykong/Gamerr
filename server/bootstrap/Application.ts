@@ -1,9 +1,10 @@
-import { ConfigService } from '../config/ConfigService';
-import { StartupChecks } from './StartupChecks';
-import { ScanService } from '../services/scanner/ScanService';
-import { HealthCheckService } from '../services/HealthCheckService';
-import { ApplicationStatus } from '../types/ApplicationStatus';
 import { ApiServer } from '../api/ApiServer';
+import { ConfigService } from '../config/ConfigService';
+import { DatabaseInitializer } from '../database/DatabaseInitializer';
+import { HealthCheckService } from '../services/HealthCheckService';
+import { ScanService } from '../services/scanner/ScanService';
+import { ApplicationStatus } from '../types/ApplicationStatus';
+import { StartupChecks } from './StartupChecks';
 
 export class Application {
   private configService = new ConfigService();
@@ -11,9 +12,13 @@ export class Application {
   private scanService = new ScanService();
   private healthCheckService = new HealthCheckService();
   private apiServer = new ApiServer();
+  private databaseInitializer =
+    new DatabaseInitializer();
 
   async start() {
     console.log('Starting Gamerr...');
+
+    await this.databaseInitializer.initialize();
 
     const setupState = this.startupChecks.run();
 
