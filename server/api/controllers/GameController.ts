@@ -1,12 +1,14 @@
 import { GameService } from '../../services/GameService';
 import { ControllerResponse } from './ControllerResponse';
 import { ControllerCodes } from './ControllerCodes';
-import { Game } from '../../types/Game';
+import { GamesResponse } from './GamesResponse';
 
 export class GamesController {
   private gameService = new GameService();
 
-  async getGames(): Promise<ControllerResponse<Game[]>> {
+  async getGames(): Promise<
+    ControllerResponse<GamesResponse>
+  > {
     const result = await this.gameService.getAllGames();
 
     if (!result.success) {
@@ -21,7 +23,9 @@ export class GamesController {
 
     return {
       success: true,
-      data: result.data,
+      data: {
+        games: result.data ?? [],
+      },
     };
   }
 }
