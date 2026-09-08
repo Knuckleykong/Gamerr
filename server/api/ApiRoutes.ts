@@ -5,6 +5,11 @@ export interface ApiRoute {
 
 export class ApiRoutes {
   getRoutes(): ApiRoute[] {
-    return [];
+    return [
+      {
+        method: 'GET',
+        path: '/api/v1/health',
+      },
+    ];
   }
 }
