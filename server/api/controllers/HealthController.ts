@@ -1,12 +1,10 @@
 import { ControllerResponse } from './ControllerResponse';
 import { ControllerCodes } from './ControllerCodes';
+import { HealthResponse } from '../../types/HealthResponse';
 
 export class HealthController {
   async getHealth(): Promise<
-    ControllerResponse<{
-      status: string;
-      service: string;
-    }>
+    ControllerResponse<HealthResponse>
   > {
     try {
       return {
@@ -21,7 +19,8 @@ export class HealthController {
         success: false,
         error: {
           code: ControllerCodes.HealthError,
-          message: 'Unable to retrieve health status',
+          message:
+            'Unable to retrieve health status',
         },
       };
     }
