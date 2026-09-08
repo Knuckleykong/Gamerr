@@ -1,7 +1,7 @@
 import prisma from '../database/client';
-import { DatabaseStatus } from '../types/DatabaseStatus';
-import { DatabaseConstants } from '../database/DatabaseConstants';
 import { DatabaseConfig } from '../database/DatabaseConfig';
+import { DatabaseConstants } from '../database/DatabaseConstants';
+import { DatabaseStatus } from '../types/DatabaseStatus';
 
 export class DatabaseService {
   private config: DatabaseConfig = {
@@ -20,11 +20,20 @@ export class DatabaseService {
 
       return {
         connected: true,
+        prisma: {
+          generated: true,
+          connected: true,
+        },
       };
     } catch {
       return {
         connected: false,
+        prisma: {
+          generated: false,
+          connected: false,
+        },
       };
     }
   }
 }
+`
