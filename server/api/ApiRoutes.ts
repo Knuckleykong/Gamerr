@@ -15,15 +15,20 @@ import { GamesController } from './controllers/GamesController';
 import { GameStatisticsController } from './controllers/GameStatisticsController';
 import { HealthController } from './controllers/HealthController';
 import { RoutesController } from './controllers/RoutesController';
+import { RoutesSummaryController } from './controllers/RoutesSummaryController';
 import { SettingsController } from './controllers/SettingsController';
 
 export class ApiRoutes {
   private apiController = new ApiController();
   private routesController = new RoutesController();
-  private healthController = new HealthController();
+  private routesSummaryController =
+    new RoutesSummaryController();
+  private healthController =
+    new HealthController();
   private applicationController =
     new ApplicationController();
-  private gamesController = new GamesController();
+  private gamesController =
+    new GamesController();
   private gameStatisticsController =
     new GameStatisticsController();
   private settingsController =
@@ -44,6 +49,12 @@ export class ApiRoutes {
         path: `${ApiConstants.BasePath}${ApiRouteConstants.Routes}`,
         handler: () =>
           this.routesController.getRoutes(),
+      },
+      {
+        method: ApiMethods.GET,
+        path: `${ApiConstants.BasePath}${ApiRouteConstants.Routes}/summary`,
+        handler: () =>
+          this.routesSummaryController.getSummary(),
       },
       {
         method: ApiMethods.GET,
@@ -85,3 +96,17 @@ export class ApiRoutes {
       },
     ];
   }
+
+  getRouteCollection(): RouteCollection {
+    return {
+      routes: this.getRoutes().map(
+        ({ method, path }): ApiRouteInfo => ({
+          route: {
+            method,
+            path,
+          },
+        })
+      ),
+    };
+  }
+}
