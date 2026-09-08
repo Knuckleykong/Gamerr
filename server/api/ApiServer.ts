@@ -7,6 +7,7 @@ import { ApiStatusConstants } from '../constants/ApiStatusConstants';
 
 import { ApiInfo } from '../types/ApiInfo';
 import { ApiResult } from '../types/ApiResult';
+import { ApiRouteSummary } from '../types/ApiRouteSummary';
 
 export class ApiServer {
   private routes = new ApiRoutes();
@@ -41,22 +42,31 @@ export class ApiServer {
   async initialize(
     config: ApiConfig
   ): Promise<ApiResult> {
-    const routes = this.routes.getRoutes();
+    const summary = this.getRouteSummary();
 
     return {
       success: true,
-      registeredRoutes: routes.length,
+      registeredRoutes:
+        summary.totalRoutes,
     };
   }
 
   async getInfo(
     config: ApiConfig
   ): Promise<ApiInfo> {
-    const routes = this.routes.getRoutes();
+    const summary = this.getRouteSummary();
 
     return {
       port: config.port,
-      registeredRoutes: routes.length,
+      registeredRoutes:
+        summary.totalRoutes,
+    };
+  }
+
+  getRouteSummary(): ApiRouteSummary {
+    return {
+      totalRoutes:
+        this.routes.getRoutes().length,
     };
   }
 }
