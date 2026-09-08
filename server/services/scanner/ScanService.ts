@@ -1,12 +1,14 @@
 import { LibraryScanner } from './LibraryScanner';
-import { GameService } from '../GameService';
 
 export class ScanService {
   private scanner = new LibraryScanner();
-  private gameService = new GameService();
 
-  async scanLibrary(path: string) {
+  async scan(path: string) {
+    console.log(`Scanning ${path}`);
+
     const games = await this.scanner.scanLibrary(path);
+
+    console.log(`Found ${games.length} games`);
 
     return games;
   }
