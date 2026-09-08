@@ -1,0 +1,7 @@
+{
+  "name": "gamerr",
+  "version": "0.1.0-alpha",
+  "description": "A self-hosted game discovery, request, and library management platform for retro gaming.",
+  "main": "server/index.ts",
+  "license": "MIT"
+}
