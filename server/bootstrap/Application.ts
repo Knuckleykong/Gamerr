@@ -3,12 +3,14 @@ import { StartupChecks } from './StartupChecks';
 import { ScanService } from '../services/scanner/ScanService';
 import { HealthCheckService } from '../services/HealthCheckService';
 import { ApplicationStatus } from '../types/ApplicationStatus';
+import { ApiServer } from '../api/ApiServer';
 
 export class Application {
   private configService = new ConfigService();
   private startupChecks = new StartupChecks();
   private scanService = new ScanService();
   private healthCheckService = new HealthCheckService();
+  private apiServer = new ApiServer();
 
   async start() {
     console.log('Starting Gamerr...');
@@ -26,6 +28,13 @@ export class Application {
 
     console.log('Application Status');
     console.log(status);
+
+    const apiStatus = await this.apiServer.start({
+      port: 5055,
+    });
+
+    console.log('API Status');
+    console.log(apiStatus);
 
     if (!status.setupComplete) {
       console.log(
