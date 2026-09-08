@@ -1,11 +1,12 @@
 import { DatabaseMessages } from '../constants/DatabaseMessages';
 import { DatabaseService } from '../services/DatabaseService';
+import { StartupResult } from '../types/StartupResult';
 
 export class DatabaseInitializer {
   private databaseService =
     new DatabaseService();
 
-  async initialize(): Promise<void> {
+  async initialize(): Promise<StartupResult> {
     console.log(
       DatabaseMessages.Initializing
     );
@@ -14,13 +15,20 @@ export class DatabaseInitializer {
       await this.databaseService.getStatus();
 
     if (!status.connected) {
-      throw new Error(
-        DatabaseMessages.InitializationFailed
-      );
+      return {
+        success: false,
+        message:
+          DatabaseMessages.InitializationFailed,
+      };
     }
 
     console.log(
       DatabaseMessages.Initialized
     );
+
+    return {
+      success: true,
+      message: DatabaseMessages.Initialized,
+    };
   }
 }
