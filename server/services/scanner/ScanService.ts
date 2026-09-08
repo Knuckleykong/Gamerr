@@ -1,15 +1,31 @@
 import { LibraryScanner } from './LibraryScanner';
+import { ScanSummary } from '../../types/ScanSummary';
+import { ScannedGame } from '../../types/ScannedGame';
 
 export class ScanService {
   private scanner = new LibraryScanner();
 
-  async scan(path: string) {
-    console.log(`Scanning ${path}`);
+  async scan(paths: string[]): Promise<ScanSummary> {
+    const allGames: ScannedGame[] = [];
 
-    const games = await this.scanner.scanLibrary(path);
+    for (const path of paths) {
+      console.log(`Scanning ${path}`);
 
-    console.log(`Found ${games.length} games`);
+      const games = await this.scanner.scanLibrary(path);
 
-    return games;
+      console.log(`Found ${games.length} games`);
+
+      allGames.push(...games);
+    }
+
+    const platforms = new Set(
+      allGames.map((game) => game.platform)
+    );
+
+    return {
+      totalGames: allGames.length,
+      totalPlatforms: platforms.size,
+      scannedPaths: paths.length,
+    };
   }
 }
