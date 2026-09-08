@@ -1,5 +1,7 @@
 import { createServer } from 'http';
 
+import { ApiMessages } from '../constants/ApiMessages';
+
 import { HttpRequestHandler } from './HttpRequestHandler';
 
 export class NodeHttpServer {
@@ -29,6 +31,10 @@ export class NodeHttpServer {
       }
     );
 
-    server.listen(port);
+    server.listen(port, () => {
+      console.log(
+        `${ApiMessages.Listening} ${port}`
+      );
+    });
   }
 }
