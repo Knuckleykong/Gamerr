@@ -2,6 +2,7 @@ import { DatabaseService } from '../../services/DatabaseService';
 import { ApplicationConstants } from '../../constants/ApplicationConstants';
 import { HealthConstants } from '../../constants/HealthConstants';
 import { ControllerCodes } from './ControllerCodes';
+import { ControllerMessages } from './ControllerMessages';
 import { ControllerResponse } from './ControllerResponse';
 import { HealthResponse } from './HealthResponse';
 
@@ -41,7 +42,7 @@ export class HealthController {
         error: {
           code: ControllerCodes.HealthError,
           message:
-            'Unable to retrieve health status',
+            ControllerMessages.HealthUnavailable,
         },
       };
     }
