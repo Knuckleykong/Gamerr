@@ -1,5 +1,6 @@
 import { ApiServer } from '../api/ApiServer';
 import { ConfigService } from '../config/ConfigService';
+import { ApiConstants } from '../constants/ApiConstants';
 import { ApplicationConstants } from '../constants/ApplicationConstants';
 import { DatabaseInitializer } from '../database/DatabaseInitializer';
 import { HealthCheckService } from '../services/HealthCheckService';
@@ -38,7 +39,7 @@ export class Application {
     console.log(status);
 
     const apiStatus = await this.apiServer.start({
-      port: 5055,
+      port: ApiConstants.DefaultPort,
     });
 
     console.log('API Status');
