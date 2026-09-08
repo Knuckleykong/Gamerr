@@ -1,0 +1,15 @@
+export const ROM_EXTENSIONS = [
+  '.sfc',
+  '.smc',
+  '.nes',
+  '.gb',
+  '.gbc',
+  '.gba',
+  '.gen',
+  '.md',
+  '.bin',
+  '.cue',
+  '.chd',
+  '.z64',
+  '.n64',
+];
