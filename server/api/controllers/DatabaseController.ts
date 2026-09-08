@@ -1,5 +1,6 @@
 import { DatabaseService } from '../../services/DatabaseService';
 import { ControllerCodes } from './ControllerCodes';
+import { ControllerMessages } from './ControllerMessages';
 import { ControllerResponse } from './ControllerResponse';
 import { DatabaseResponse } from './DatabaseResponse';
 
@@ -34,7 +35,7 @@ export class DatabaseController {
         error: {
           code: ControllerCodes.DatabaseError,
           message:
-            'Unable to retrieve database information',
+            ControllerMessages.DatabaseUnavailable,
         },
       };
     }
