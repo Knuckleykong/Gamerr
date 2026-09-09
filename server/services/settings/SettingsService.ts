@@ -1,4 +1,4 @@
-import { SettingRepository } from '../repositories/SettingRepository';
+import { SettingRepository } from '../../repositories/SettingRepository';
 
 export class SettingsService {
   private settingRepository = new SettingRepository();
