@@ -21,7 +21,8 @@ export class HttpContextFactory {
     return {
       request: this.create(
         method,
-        path
+        path,
+        body
       ),
     };
   }
