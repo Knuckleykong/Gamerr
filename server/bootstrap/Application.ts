@@ -35,7 +35,8 @@ export class Application {
     const appConfig =
       this.configService.getAppConfig();
 
-    const setupState = this.startupChecks.run();
+    const setupState = 
+      await this.startupChecks.run();
 
     const health =
       await this.healthCheckService.getHealthStatus();
