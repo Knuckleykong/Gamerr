@@ -1,7 +1,7 @@
 import prisma from '../database/client';
 import { PrismaConfig } from '../database/PrismaConfig';
 import { PrismaInfo } from '../types/PrismaInfo';
-import { PrismaStatus } from '../types/PrismaStatus';
+import { PrismaStatus } from '../database/PrismaStatus';
 
 export class PrismaService {
   private config = new PrismaConfig();
