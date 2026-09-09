@@ -30,7 +30,8 @@ export class SetupWizardController {
     />
 
     <p>
-      <button>
+      <button
+        onclick="window.location.href='/setup/metadata'">
         Save and Continue
       </button>
     </p>
