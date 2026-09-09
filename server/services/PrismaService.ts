@@ -14,7 +14,12 @@ export class PrismaService {
         generated: true,
         connected: true,
       };
-    } catch {
+    } catch (error) {
+      console.error(
+        'Prisma connection error:',
+        error
+      );
+
       return {
         generated: true,
         connected: false,
@@ -23,7 +28,8 @@ export class PrismaService {
   }
 
   async getInfo(): Promise<PrismaInfo> {
-    const status = await this.getStatus();
+    const status =
+      await this.getStatus();
 
     return {
       status,
