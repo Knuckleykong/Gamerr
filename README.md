@@ -1,3 +1,23 @@
-A self-hosted game discovery, request, and library management platform for RetroPie, EmulationStation, and retro game collections.
+# Gamerr
 
-Inspired by Seerr.
+Self-hosted retro game library manager.
+
+## Current Status
+
+Alpha
+
+### Working
+
+- First-run setup wizard
+- SQLite database
+- Persistent settings
+- ROM library scanning
+- Game discovery
+- Health checks
+
+### In Progress
+
+- Dashboard
+- Library UI
+- Metadata scraping
+- Docker deployment
