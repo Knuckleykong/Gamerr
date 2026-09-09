@@ -23,18 +23,20 @@ export class SetupWizardController {
       Enter the path where your ROMs are stored.
     </p>
 
-    <input
-      type="text"
-      placeholder="D:\\ROMs"
-      size="50"
-    />
+    <form
+      method="post"
+          type="text"
+        name="libraryPath"
+        placeholder="D:\\ROMs"
+        size="50"
+      />
 
-    <p>
-      <button
-        onclick="window.location.href='/setup/metadata'">
-        Save and Continue
-      </button>
-    </p>
+      <p>
+        <button type="submit">
+          Save and Continue
+        </button>
+      </p>
+    </form>
   </body>
 </html>
     `);
