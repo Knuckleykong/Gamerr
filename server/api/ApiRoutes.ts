@@ -22,6 +22,7 @@ import { SetupWizardController } from './controllers/SetupWizardController';
 import { MetadataSetupController } from './controllers/MetadataSetupController';
 import { ScanSetupController } from './controllers/ScanSetupController';
 import { CompleteSetupController } from './controllers/CompleteSetupController';
+import { LibrarySetupController } from './controllers/LibrarySetupController';
 
 export class ApiRoutes {
   private setupController =
@@ -38,6 +39,9 @@ export class ApiRoutes {
 
   private completeSetupController =
     new CompleteSetupController();
+
+  private librarySetupController =
+    new LibrarySetupController();
 
   private apiController =
     new ApiController();
@@ -65,37 +69,45 @@ export class ApiRoutes {
       {
         method: ApiMethods.GET,
         path: '/',
-        handler: async () =>
+        handler: async _context =>
           this.setupController.getSetup(),
       },
       {
         method: ApiMethods.GET,
         path: '/setup',
-        handler: async () =>
+        handler: async _context =>
           this.setupWizardController.getSetup(),
+      },
+      {
+        method: ApiMethods.POST,
+        path: '/setup/library',
+        handler: async context =>
+          this.librarySetupController.saveLibraryPath(
+            context
+          ),
       },
       {
         method: ApiMethods.GET,
         path: '/setup/metadata',
-        handler: async () =>
+        handler: async _context =>
           this.metadataSetupController.getSetup(),
       },
       {
         method: ApiMethods.GET,
         path: '/setup/scan',
-        handler: async () =>
+        handler: async _context =>
           this.scanSetupController.getSetup(),
       },
       {
         method: ApiMethods.GET,
         path: '/setup/complete',
-        handler: async () =>
+        handler: async _context =>
           this.completeSetupController.getSetup(),
       },
       {
         method: ApiMethods.GET,
         path: `${ApiConstants.BasePath}${ApiRouteConstants.Api}`,
-        handler: async () =>
+        handler: async _context =>
           ControllerResponseMapper.map(
             await this.apiController.getApi()
           ),
@@ -103,7 +115,7 @@ export class ApiRoutes {
       {
         method: ApiMethods.GET,
         path: `${ApiConstants.BasePath}${ApiRouteConstants.Health}`,
-        handler: async () =>
+        handler: async _context =>
           ControllerResponseMapper.map(
             await this.healthController.getHealth()
           ),
@@ -111,7 +123,7 @@ export class ApiRoutes {
       {
         method: ApiMethods.GET,
         path: `${ApiConstants.BasePath}${ApiRouteConstants.Application}`,
-        handler: async () =>
+        handler: async _context =>
           ControllerResponseMapper.map(
             await this.applicationController.getApplication()
           ),
@@ -119,7 +131,7 @@ export class ApiRoutes {
       {
         method: ApiMethods.GET,
         path: `${ApiConstants.BasePath}${ApiRouteConstants.Database}`,
-        handler: async () =>
+        handler: async _context =>
           ControllerResponseMapper.map(
             await this.databaseController.getDatabase()
           ),
@@ -127,7 +139,7 @@ export class ApiRoutes {
       {
         method: ApiMethods.GET,
         path: `${ApiConstants.BasePath}${ApiRouteConstants.Games}`,
-        handler: async () =>
+        handler: async _context =>
           ControllerResponseMapper.map(
             await this.gamesController.getGames()
           ),
@@ -135,7 +147,7 @@ export class ApiRoutes {
       {
         method: ApiMethods.GET,
         path: `${ApiConstants.BasePath}${ApiRouteConstants.GameSummary}`,
-        handler: async () =>
+        handler: async _context =>
           ControllerResponseMapper.map(
             await this.gameStatisticsController.getSummary()
           ),
@@ -143,7 +155,7 @@ export class ApiRoutes {
       {
         method: ApiMethods.GET,
         path: `${ApiConstants.BasePath}${ApiRouteConstants.Settings}`,
-        handler: async () =>
+        handler: async _context =>
           ControllerResponseMapper.map(
             await this.settingsController.getSetting(
               SettingsConstants.LibraryPaths
