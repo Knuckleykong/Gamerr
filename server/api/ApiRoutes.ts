@@ -16,9 +16,12 @@ import { GamesController } from './controllers/GamesController';
 import { GameStatisticsController } from './controllers/GameStatisticsController';
 import { HealthController } from './controllers/HealthController';
 import { SettingsController } from './controllers/SettingsController';
+
 import { SetupController } from './controllers/SetupController';
 import { SetupWizardController } from './controllers/SetupWizardController';
 import { MetadataSetupController } from './controllers/MetadataSetupController';
+import { ScanSetupController } from './controllers/ScanSetupController';
+import { CompleteSetupController } from './controllers/CompleteSetupController';
 
 export class ApiRoutes {
   private setupController =
@@ -29,6 +32,12 @@ export class ApiRoutes {
 
   private metadataSetupController =
     new MetadataSetupController();
+
+  private scanSetupController =
+    new ScanSetupController();
+
+  private completeSetupController =
+    new CompleteSetupController();
 
   private apiController =
     new ApiController();
@@ -70,6 +79,18 @@ export class ApiRoutes {
         path: '/setup/metadata',
         handler: async () =>
           this.metadataSetupController.getSetup(),
+      },
+      {
+        method: ApiMethods.GET,
+        path: '/setup/scan',
+        handler: async () =>
+          this.scanSetupController.getSetup(),
+      },
+      {
+        method: ApiMethods.GET,
+        path: '/setup/complete',
+        handler: async () =>
+          this.completeSetupController.getSetup(),
       },
       {
         method: ApiMethods.GET,
