@@ -53,7 +53,8 @@ export class MetadataSetupController {
         Back
       </button>
 
-      <button>
+      <button
+        onclick="window.location.href='/setup/scan'">
         Save and Continue
       </button>
     </p>
