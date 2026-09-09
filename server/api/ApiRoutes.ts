@@ -18,13 +18,17 @@ import { HealthController } from './controllers/HealthController';
 import { SettingsController } from './controllers/SettingsController';
 import { SetupController } from './controllers/SetupController';
 import { SetupWizardController } from './controllers/SetupWizardController';
+import { MetadataSetupController } from './controllers/MetadataSetupController';
 
 export class ApiRoutes {
   private setupController =
     new SetupController();
 
-private setupWizardController =
-  new SetupWizardController();
+  private setupWizardController =
+    new SetupWizardController();
+
+  private metadataSetupController =
+    new MetadataSetupController();
 
   private apiController =
     new ApiController();
@@ -60,6 +64,12 @@ private setupWizardController =
         path: '/setup',
         handler: async () =>
           this.setupWizardController.getSetup(),
+      },
+      {
+        method: ApiMethods.GET,
+        path: '/setup/metadata',
+        handler: async () =>
+          this.metadataSetupController.getSetup(),
       },
       {
         method: ApiMethods.GET,
