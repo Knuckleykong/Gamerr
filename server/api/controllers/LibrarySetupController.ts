@@ -29,11 +29,20 @@ export class LibrarySetupController {
       return HttpResponseFactory.html(`
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Error</title>
+  </head>
+
   <body>
     <h1>Error</h1>
+
     <p>
       Failed to save library path.
     </p>
+
+    <pre>
+${result.error ?? 'Unknown error'}
+    </pre>
   </body>
 </html>
       `);
