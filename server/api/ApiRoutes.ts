@@ -119,4 +119,22 @@ export class ApiRoutes {
           ControllerResponseMapper.map(
             await this.settingsController.getSetting(
               SettingsConstants.LibraryPaths
-    
+            )
+          ),
+      },
+    ];
+  }
+
+  getRouteCollection(): RouteCollection {
+    return {
+      routes: this.getRoutes().map(
+        ({ method, path }): ApiRouteInfo => ({
+          route: {
+            method,
+            path,
+          },
+        })
+      ),
+    };
+  }
+}
