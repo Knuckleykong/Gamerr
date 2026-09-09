@@ -6,6 +6,7 @@ export class SetupController {
         <head>
           <title>Gamerr Setup</title>
         </head>
+
         <body>
           <h1>Welcome to Gamerr</h1>
 
@@ -13,9 +14,9 @@ export class SetupController {
             Gamerr has not been configured.
           </p>
 
-          <p>
-            Setup wizard coming soon.
-          </p>
+          <button>
+            Begin Setup
+          </button>
         </body>
       </html>
     `;
