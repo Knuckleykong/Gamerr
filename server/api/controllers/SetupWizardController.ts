@@ -23,7 +23,8 @@ export class SetupWizardController {
       Enter the path where your ROMs are stored.
     </p>
 
-    /setup/library
+    <form
+      ry
       <input
         type="text"
         name="libraryPath"
