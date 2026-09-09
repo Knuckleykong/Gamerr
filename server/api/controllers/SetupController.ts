@@ -21,7 +21,8 @@ export class SetupController {
       Setup wizard coming soon.
     </p>
 
-    <a href="/setuputton>
+    /setup
+      <button>
         Begin Setup
       </button>
     </a>
