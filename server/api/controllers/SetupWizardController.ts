@@ -23,9 +23,9 @@ export class SetupWizardController {
       Enter the path where your ROMs are stored.
     </p>
 
-    <form
-      method="post"
-          type="text"
+    /setup/library
+      <input
+        type="text"
         name="libraryPath"
         placeholder="D:\\ROMs"
         size="50"
