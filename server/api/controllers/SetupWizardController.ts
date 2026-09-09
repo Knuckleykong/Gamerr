@@ -24,9 +24,8 @@ export class SetupWizardController {
     </p>
 
     <form
-      ry
-      <input
-        type="text"
+      method="post"
+      actionype="text"
         name="libraryPath"
         placeholder="D:\\ROMs"
         size="50"
@@ -37,6 +36,7 @@ export class SetupWizardController {
           Save and Continue
         </button>
       </p>
+
     </form>
   </body>
 </html>
