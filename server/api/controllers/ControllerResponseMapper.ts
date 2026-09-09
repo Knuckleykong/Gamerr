@@ -1,7 +1,7 @@
 import { HttpResponse } from '../HttpResponse';
 import { HttpResponseFactory } from '../HttpResponseFactory';
 
-import { ControllerResponse } from './controllers/ControllerResponse';
+import { ControllerResponse } from './ControllerResponse';
 
 export class ControllerResponseMapper {
   static map<T>(
