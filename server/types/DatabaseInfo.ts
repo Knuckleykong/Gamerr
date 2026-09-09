@@ -1,6 +1,6 @@
 import { DatabaseConfig } from '../database/DatabaseConfig';
 import { DatabaseStatus } from './DatabaseStatus';
-import { DatabaseVersion } from './DatabaseVersion';
+import { DatabaseVersion } from '../database/DatabaseVersion';
 
 export interface DatabaseInfo {
   config: DatabaseConfig;
