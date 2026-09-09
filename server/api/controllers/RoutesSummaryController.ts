@@ -2,13 +2,13 @@ import { ApiRoutes } from '../ApiRoutes';
 import { RouteSummaryMessages } from '../../constants/RouteSummaryMessages';
 import { ControllerCodes } from './ControllerCodes';
 import { ControllerResponse } from './ControllerResponse';
-import { RouteSummaryResponse } from './RouteSummaryResponse';
+import { RoutesSummaryResponse } from './RoutesSummaryResponse';
 
 export class RoutesSummaryController {
   private apiRoutes = new ApiRoutes();
 
   async getSummary(): Promise<
-    ControllerResponse<RouteSummaryResponse>
+    ControllerResponse<RoutesSummaryResponse>
   > {
     try {
       return {
