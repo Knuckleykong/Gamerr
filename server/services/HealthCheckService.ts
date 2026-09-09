@@ -8,7 +8,7 @@ export class HealthCheckService {
 
   async getHealthStatus(): Promise<HealthStatus> {
     const setupState =
-      this.setupService.getSetupState();
+      await this.setupService.getSetupState();
 
     const databaseStatus =
       await this.databaseService.getStatus();
