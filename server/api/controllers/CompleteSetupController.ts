@@ -40,7 +40,8 @@ export class CompleteSetupController {
         Back
       </button>
 
-      <button>
+      <button
+        onclick="window.location.href='/'">
         Finish Setup
       </button>
     </p>
