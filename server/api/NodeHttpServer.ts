@@ -27,10 +27,17 @@ export class NodeHttpServer {
   start(port: number): HttpServerStatus {
     const server = createServer(
       async (request, response) => {
+        let body = '';
+
+        for await (const chunk of request) {
+          body += chunk;
+        }
+
         const requestInfo: HttpRequestInfo =
           HttpContextFactory.createRequestInfo(
             request.method ?? 'GET',
-            request.url ?? '/'
+            request.url ?? '/',
+            body
           );
 
         const requestLog: HttpRequestLog = {
