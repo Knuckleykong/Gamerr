@@ -67,18 +67,32 @@ export class NodeHttpServer {
           response: responseInfo,
         };
 
+        const httpResponse =
+          transaction.response.response;
+
         response.writeHead(
-          transaction.response.response
-            .statusCode,
+          httpResponse.statusCode,
           {
             [HttpHeaderNames.ContentType]:
+              httpResponse.contentType ??
               HttpContentTypes.Json,
           }
         );
 
+        if (
+          httpResponse.contentType ===
+          HttpContentTypes.Html
+        ) {
+          response.end(
+            httpResponse.body as string
+          );
+
+          return;
+        }
+
         response.end(
           JSON.stringify(
-            transaction.response.response.body
+            httpResponse.body
           )
         );
       }
