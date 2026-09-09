@@ -1,5 +1,5 @@
 import { ApiMethods } from './ApiMethods';
-import { ControllerResponseMapper } from './ControllerResponseMapper';
+import { ControllerResponseMapper } from './controllers/ControllerResponseMapper';
 import { RouteHandler } from './RouteHandler';
 
 import { ApiRouteInfo } from '../types/ApiRouteInfo';
@@ -21,20 +21,28 @@ import { SettingsController } from './controllers/SettingsController';
 
 export class ApiRoutes {
   private apiController = new ApiController();
+
   private routesController =
     new RoutesController();
+
   private routesSummaryController =
     new RoutesSummaryController();
+
   private healthController =
     new HealthController();
+
   private applicationController =
     new ApplicationController();
+
   private gamesController =
     new GamesController();
+
   private gameStatisticsController =
     new GameStatisticsController();
+
   private settingsController =
     new SettingsController();
+
   private databaseController =
     new DatabaseController();
 
@@ -111,22 +119,4 @@ export class ApiRoutes {
           ControllerResponseMapper.map(
             await this.settingsController.getSetting(
               SettingsConstants.LibraryPaths
-            )
-          ),
-      },
-    ];
-  }
-
-  getRouteCollection(): RouteCollection {
-    return {
-      routes: this.getRoutes().map(
-        ({ method, path }): ApiRouteInfo => ({
-          route: {
-            method,
-            path,
-          },
-        })
-      ),
-    };
-  }
-}
+    
