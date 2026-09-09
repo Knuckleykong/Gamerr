@@ -20,7 +20,9 @@ export class HttpServer {
 
     return {
       found: true,
-      response: await route.handler(),
+      response: await route.handler(
+        context
+      ),
     };
   }
 }
