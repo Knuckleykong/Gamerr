@@ -23,11 +23,11 @@ export class SetupWizardController {
       Enter the path where your ROMs are stored.
     </p>
 
-    <form
-      method="post"
-      actionype="text"
+    <form method="post" action="/setup/library">
+      <input
+        type="text"
         name="libraryPath"
-        placeholder="D:\\ROMs"
+        placeholder="D:\ROMs"
         size="50"
       />
 
@@ -36,7 +36,6 @@ export class SetupWizardController {
           Save and Continue
         </button>
       </p>
-
     </form>
   </body>
 </html>
