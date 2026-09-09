@@ -21,11 +21,11 @@ export class SetupController {
       Setup wizard coming soon.
     </p>
 
-    /setup
-      <button>
+    <p>
+      <button onclick="window.location.href='/setup'">
         Begin Setup
       </button>
-    </a>
+    </p>
   </body>
 </html>
     `);
