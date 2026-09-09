@@ -1,5 +1,5 @@
-import { HttpResponse } from './HttpResponse';
-import { HttpResponseFactory } from './HttpResponseFactory';
+import { HttpResponse } from '../HttpResponse';
+import { HttpResponseFactory } from '../HttpResponseFactory';
 
 import { ControllerResponse } from './controllers/ControllerResponse';
 
