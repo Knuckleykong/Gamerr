@@ -1,15 +1,20 @@
-import { ConfigService } from '../config/ConfigService';
+import { SettingsService } from './settings/SettingsService';
+import { SettingsConstants } from '../constants/SettingsConstants';
 import { SetupState } from '../types/SetupState';
 
 export class SetupService {
-  private configService = new ConfigService();
+  private settingsService =
+    new SettingsService();
 
-  getSetupState(): SetupState {
-    const libraryConfig =
-      this.configService.getLibraryConfig();
+  async getSetupState(): Promise<SetupState> {
+    const result =
+      await this.settingsService.getValue(
+        SettingsConstants.LibraryPaths
+      );
 
     const hasLibraryPaths =
-      libraryConfig.paths.length > 0;
+      result.success &&
+      !!result.data?.value?.trim();
 
     return {
       isFirstRun: !hasLibraryPaths,
