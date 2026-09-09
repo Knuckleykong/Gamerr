@@ -17,10 +17,14 @@ import { GameStatisticsController } from './controllers/GameStatisticsController
 import { HealthController } from './controllers/HealthController';
 import { SettingsController } from './controllers/SettingsController';
 import { SetupController } from './controllers/SetupController';
+import { SetupWizardController } from './controllers/SetupWizardController';
 
 export class ApiRoutes {
   private setupController =
     new SetupController();
+
+private setupWizardController =
+  new SetupWizardController();
 
   private apiController =
     new ApiController();
@@ -50,6 +54,12 @@ export class ApiRoutes {
         path: '/',
         handler: async () =>
           this.setupController.getSetup(),
+      },
+      {
+        method: ApiMethods.GET,
+        path: '/setup',
+        handler: async () =>
+          this.setupWizardController.getSetup(),
       },
       {
         method: ApiMethods.GET,
