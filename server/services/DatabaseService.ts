@@ -1,6 +1,6 @@
 import { DatabaseConfig } from '../database/DatabaseConfig';
 import { DatabaseConstants } from '../database/DatabaseConstants';
-import { DatabaseVersionConstants } from '../constants/DatabaseVersionConstants';
+import { DatabaseVersionConstants } from '../constants/DatabaseConstants';
 import { DatabaseStatus } from '../types/DatabaseStatus';
 import { DatabaseVersion } from '../database/DatabaseVersion';
 import { PrismaService } from './PrismaService';
