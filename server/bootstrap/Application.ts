@@ -74,7 +74,7 @@ export class Application {
     }
 
     const libraryConfig =
-      this.configService.getLibraryConfig();
+      await this.configService.getLibraryConfig();
 
     const scanSummary =
       await this.scanService.scan(
