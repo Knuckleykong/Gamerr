@@ -1,4 +1,4 @@
-import { SettingsService } from '../../services/SettingsService';
+import { SettingsService } from '../../services/settings/SettingsService';
 import { ControllerResponse } from './ControllerResponse';
 import { ControllerCodes } from './ControllerCodes';
 import { SettingsResponse } from './SettingsResponse';
