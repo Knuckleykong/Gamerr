@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 import { Application } from './bootstrap/Application';
 
 async function main() {
@@ -6,7 +8,11 @@ async function main() {
 
     await app.start();
   } catch (error) {
-    console.error('Failed to start Gamerr', error);
+    console.error(
+      'Failed to start Gamerr',
+      error
+    );
+
     process.exit(1);
   }
 }
