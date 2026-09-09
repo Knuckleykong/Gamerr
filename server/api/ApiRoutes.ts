@@ -15,18 +15,11 @@ import { DatabaseController } from './controllers/DatabaseController';
 import { GamesController } from './controllers/GamesController';
 import { GameStatisticsController } from './controllers/GameStatisticsController';
 import { HealthController } from './controllers/HealthController';
-import { RoutesController } from './controllers/RoutesController';
-import { RoutesSummaryController } from './controllers/RoutesSummaryController';
 import { SettingsController } from './controllers/SettingsController';
 
 export class ApiRoutes {
-  private apiController = new ApiController();
-
-  private routesController =
-    new RoutesController();
-
-  private routesSummaryController =
-    new RoutesSummaryController();
+  private apiController =
+    new ApiController();
 
   private healthController =
     new HealthController();
@@ -54,22 +47,6 @@ export class ApiRoutes {
         handler: async () =>
           ControllerResponseMapper.map(
             await this.apiController.getApi()
-          ),
-      },
-      {
-        method: ApiMethods.GET,
-        path: `${ApiConstants.BasePath}${ApiRouteConstants.Routes}`,
-        handler: async () =>
-          ControllerResponseMapper.map(
-            await this.routesController.getRoutes()
-          ),
-      },
-      {
-        method: ApiMethods.GET,
-        path: `${ApiConstants.BasePath}${ApiRouteConstants.Routes}/summary`,
-        handler: async () =>
-          ControllerResponseMapper.map(
-            await this.routesSummaryController.getSummary()
           ),
       },
       {
